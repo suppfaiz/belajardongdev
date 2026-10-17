@@ -80,17 +80,20 @@ apt-get install -y nginx
 systemctl enable nginx
 systemctl start nginx
 
-# 6. Install PHP 8.3 & Extensions
+# 6. Install PHP 8.4 & Extensions (Diperlukan oleh Laravel 13 & Symfony 8)
 echo ""
-echo -e "${YELLOW}[3/7] Memasang PHP 8.3 dan ekstensi yang diperlukan...${NC}"
+echo -e "${YELLOW}[3/7] Memasang PHP 8.4 dan ekstensi yang diperlukan...${NC}"
 add-apt-repository -y ppa:ondrej/php || true
 apt-get update -y
-apt-get install -y php8.3-fpm php8.3-cli php8.3-common php8.3-mbstring php8.3-xml \
-    php8.3-curl php8.3-zip php8.3-bcmath php8.3-intl php8.3-gd php8.3-sqlite3 \
-    php8.3-pgsql php8.3-mysql php8.3-tokenizer
+apt-get install -y php8.4-fpm php8.4-cli php8.4-common php8.4-mbstring php8.4-xml \
+    php8.4-curl php8.4-zip php8.4-bcmath php8.4-intl php8.4-gd php8.4-sqlite3 \
+    php8.4-pgsql php8.4-mysql php8.4-tokenizer
 
-systemctl enable php8.3-fpm
-systemctl start php8.3-fpm
+# Pastikan CLI menggunakan PHP 8.4 sebagai default
+update-alternatives --set php /usr/bin/php8.4 || true
+
+systemctl enable php8.4-fpm
+systemctl start php8.4-fpm
 
 # 7. Install Composer
 echo ""
@@ -166,6 +169,7 @@ fi
 
 # 11. Composer Install & Build Frontend
 echo "Menjalankan Composer install & build aset Vite..."
+export COMPOSER_ALLOW_SUPERUSER=1
 composer install --no-dev --optimize-autoloader --no-interaction
 php artisan key:generate --force
 php artisan storage:link || true
@@ -213,7 +217,7 @@ server {
     error_page 404 /index.php;
 
     location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
         fastcgi_param SCRIPT_FILENAME \$realpath_root\$fastcgi_script_name;
         include fastcgi_params;
         fastcgi_hide_header X-Powered-By;

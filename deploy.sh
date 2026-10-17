@@ -33,6 +33,7 @@ git pull origin main
 
 # 3. Install PHP Dependencies
 echo -e "${YELLOW}[3/6] Memperbarui dependensi Composer...${NC}"
+export COMPOSER_ALLOW_SUPERUSER=1
 composer install --no-dev --optimize-autoloader --no-interaction
 
 # 4. Run Database Migrations
@@ -63,7 +64,7 @@ fi
 
 # Reload services if systemctl is available
 if command -v systemctl &> /dev/null; then
-    systemctl reload php8.3-fpm || true
+    systemctl reload php8.4-fpm || systemctl reload php8.3-fpm || true
     systemctl reload nginx || true
 fi
 

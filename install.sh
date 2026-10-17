@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ==============================================================================
-# Belajar Dong - One-Click VPS Installer Script
+# Belajar Dong - One-Click VPS / Local Server Installer Script
 # Target OS: Ubuntu 22.04 LTS / 24.04 LTS / Debian 11/12
 # Repository: https://github.com/suppfaiz/belajardongdev.git
 # ==============================================================================
@@ -18,7 +18,8 @@ NC='\033[0m' # No Color
 
 echo -e "${BLUE}"
 echo "============================================================"
-echo "          BELAJAR DONG - ONE CLICK VPS INSTALLER            "
+echo "      BELAJAR DONG - ONE CLICK SERVER INSTALLER             "
+echo "        (Mendukung VPS Publik & Server / VM Lokal)          "
 echo "============================================================"
 echo -e "${NC}"
 
@@ -28,19 +29,28 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# 2. Get Public IP or Domain
-SERVER_IP=$(curl -s -4 ifconfig.me || hostname -I | awk '{print $1}')
-echo -e "${CYAN}IP Publik Server Anda terdeteksi: ${YELLOW}${SERVER_IP}${NC}"
+# 2. Detect Local and Public IP
+LOCAL_IP=$(hostname -I 2>/dev/null | awk '{print $1}')
+LOCAL_IP=${LOCAL_IP:-127.0.0.1}
+PUBLIC_IP=$(curl -s -m 2 -4 ifconfig.me 2>/dev/null || echo "")
+
+echo -e "${CYAN}IP Lokal terdeteksi : ${YELLOW}${LOCAL_IP}${NC}"
+if [ -n "$PUBLIC_IP" ] && [ "$PUBLIC_IP" != "$LOCAL_IP" ]; then
+    echo -e "${CYAN}IP Publik terdeteksi: ${YELLOW}${PUBLIC_IP}${NC}"
+    DEFAULT_IP="$PUBLIC_IP"
+else
+    DEFAULT_IP="$LOCAL_IP"
+fi
 
 if [ -n "$DOMAIN" ]; then
     USER_DOMAIN="$DOMAIN"
 elif [ -e /dev/tty ]; then
-    read -rp "Masukkan Domain Anda (kosongkan jika ingin menggunakan IP: ${SERVER_IP}): " USER_DOMAIN < /dev/tty || true
+    read -rp "Masukkan Domain atau IP yang ingin digunakan (Default: ${DEFAULT_IP}): " USER_DOMAIN < /dev/tty || true
 else
     USER_DOMAIN=""
 fi
 
-DOMAIN_OR_IP=${USER_DOMAIN:-$SERVER_IP}
+DOMAIN_OR_IP=${USER_DOMAIN:-$DEFAULT_IP}
 
 # 3. Choose Database Driver
 if [ -n "$DB_DRIVER" ]; then
@@ -179,9 +189,9 @@ echo -e "${YELLOW}[7/7] Membuat konfigurasi Nginx untuk Belajar Dong...${NC}"
 
 cat > /etc/nginx/sites-available/belajardong <<EOF
 server {
-    listen 80;
-    listen [::]:80;
-    server_name ${DOMAIN_OR_IP};
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _ ${DOMAIN_OR_IP};
     root ${APP_DIR}/public;
 
     add_header X-Frame-Options "SAMEORIGIN";
@@ -233,21 +243,26 @@ if [ "$DB_CHOICE" == "1" ]; then
     chmod 664 "$APP_DIR/database/database.sqlite"
 fi
 
-# 16. Optional SSL with Certbot
-if [ -n "$ENABLE_SSL" ]; then
-    INSTALL_SSL="$ENABLE_SSL"
-elif [ -n "$USER_DOMAIN" ] && [ "$USER_DOMAIN" != "$SERVER_IP" ]; then
-    if [ -e /dev/tty ]; then
+# 16. Optional SSL with Certbot (Hanya jika domain publik)
+IS_IP_OR_LOCAL=false
+if [[ "$DOMAIN_OR_IP" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || [ "$DOMAIN_OR_IP" == "localhost" ] || [[ "$DOMAIN_OR_IP" =~ \.local$ ]]; then
+    IS_IP_OR_LOCAL=true
+fi
+
+if [ "$IS_IP_OR_LOCAL" = false ] && [ -n "$USER_DOMAIN" ]; then
+    if [ -n "$ENABLE_SSL" ]; then
+        INSTALL_SSL="$ENABLE_SSL"
+    elif [ -e /dev/tty ]; then
         echo ""
         read -rp "Apakah Anda ingin memasang SSL HTTPS gratis via Let's Encrypt (Certbot)? [y/N]: " INSTALL_SSL < /dev/tty || true
     else
         INSTALL_SSL="n"
     fi
-fi
 
-if [[ "$INSTALL_SSL" =~ ^[Yy]$ ]]; then
-    apt-get install -y certbot python3-certbot-nginx
-    certbot --nginx -d "$USER_DOMAIN" --non-interactive --agree-tos -m "admin@${USER_DOMAIN}" --redirect || true
+    if [[ "$INSTALL_SSL" =~ ^[Yy]$ ]]; then
+        apt-get install -y certbot python3-certbot-nginx
+        certbot --nginx -d "$USER_DOMAIN" --non-interactive --agree-tos -m "admin@${USER_DOMAIN}" --redirect || true
+    fi
 fi
 
 # 17. Configure Firewall
@@ -258,10 +273,13 @@ fi
 
 echo ""
 echo -e "${GREEN}============================================================${NC}"
-echo -e "${GREEN}    INSTALASI BELAJAR DONG DI VPS SELESAI DENGAN SUKSES!    ${NC}"
+echo -e "${GREEN}    INSTALASI BELAJAR DONG BERHASIL DAN SIAP DIAKSES!       ${NC}"
 echo -e "${GREEN}============================================================${NC}"
 echo ""
 echo -e "Aplikasi Anda dapat diakses di: ${CYAN}http://${DOMAIN_OR_IP}${NC}"
+if [ "$DOMAIN_OR_IP" != "$LOCAL_IP" ] && [ -n "$LOCAL_IP" ]; then
+    echo -e "Akses via IP Lokal LAN        : ${CYAN}http://${LOCAL_IP}${NC}"
+fi
 echo ""
 echo -e "${YELLOW}Akun Login Default:${NC}"
 echo "------------------------------------------------------------"
@@ -270,5 +288,5 @@ echo -e "2. Akun Guru   : ${CYAN}siti.rahmawati@belajaryuk.id${NC} / password: $
 echo -e "3. Akun Parent : ${CYAN}budi.santoso@belajaryuk.id${NC} / password: ${CYAN}password${NC}"
 echo "------------------------------------------------------------"
 echo ""
-echo -e "Untuk update di kemudian hari, jalankan: ${CYAN}cd /var/www/belajardong && bash deploy.sh${NC}"
+echo -e "Untuk update di kemudian hari, jalankan: ${CYAN}cd /var/www/belajardong && sudo bash deploy.sh${NC}"
 echo ""

@@ -61,8 +61,9 @@ curl -fsSL --output /tmp/cloudflared.deb "https://github.com/cloudflare/cloudfla
 dpkg -i --force-confnew /tmp/cloudflared.deb
 rm -f /tmp/cloudflared.deb
 
-# 2. Hentikan service lama jika ada
+# 2. Hentikan dan hapus service lama jika ada
 systemctl stop cloudflared 2>/dev/null || true
+cloudflared service uninstall 2>/dev/null || true
 
 # 3. Install Cloudflare Tunnel Service
 echo -e "${YELLOW}[2/4] Memasang service tunnel ke Cloudflare...${NC}"

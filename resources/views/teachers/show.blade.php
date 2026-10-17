@@ -65,13 +65,15 @@
                     </div>
                 </div>
 
-                <!-- Right Action Buttons: "Pesan Guru" + Wishlist -->
-                <div class="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
-                    <button type="button" class="p-3 rounded-full border border-[#E5E8F0] hover:bg-rose-50 hover:text-rose-600 text-slate-400 transition" title="Simpan ke Favorit">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                <!-- Right Action Buttons: "Chat Guru" + "Pesan Guru" + Wishlist -->
+                <div class="flex items-center gap-2.5 w-full sm:w-auto justify-center sm:justify-end flex-wrap sm:flex-nowrap">
+                    <a href="{{ route('parent.messages', ['teacher_id' => $teacherProfile->user_id]) }}" 
+                       class="px-5 py-3 rounded-xl border border-[#080F63] text-[#080F63] hover:bg-blue-50/70 font-bold text-sm transition inline-flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>
-                    </button>
+                        <span>Chat Guru</span>
+                    </a>
 
                     <a href="{{ route('bookings.create', $teacherProfile->id) }}" class="btn-navy px-8 py-3 text-sm font-bold shadow-md flex-1 sm:flex-none justify-center">
                         Pesan Guru

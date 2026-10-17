@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingProcessController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DocumentDownloadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ParentDashboardController;
@@ -76,7 +77,7 @@ Route::prefix('parent')->name('parent.')->middleware(['auth', 'role:parent'])->g
     Route::get('/pembayaran', [ParentDashboardController::class, 'payments'])->name('payments');
     Route::get('/jadwal', [ParentDashboardController::class, 'schedule'])->name('schedule');
     Route::get('/progres', [ParentDashboardController::class, 'progress'])->name('progress');
-    Route::get('/pesan', [ParentDashboardController::class, 'messages'])->name('messages');
+    Route::get('/pesan', [ChatController::class, 'parentIndex'])->name('messages');
     Route::get('/ulasan', [ParentDashboardController::class, 'reviews'])->name('reviews');
     Route::get('/profil', [ParentDashboardController::class, 'profile'])->name('profile');
     Route::put('/profil', [ParentDashboardController::class, 'updateProfile'])->name('profile.update');
@@ -111,6 +112,13 @@ Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'role:teacher'])
     Route::get('/pencairan', [TeacherDashboardController::class, 'payouts'])->name('payouts');
     Route::post('/pencairan', [TeacherDashboardController::class, 'requestPayout'])->name('payouts.request');
     Route::get('/ulasan', [TeacherDashboardController::class, 'reviews'])->name('reviews');
+    Route::get('/pesan', [ChatController::class, 'teacherIndex'])->name('messages');
+});
+
+// Shared Real-time Chat API
+Route::middleware('auth')->group(function (): void {
+    Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
+    Route::get('/chat/api/{user}', [ChatController::class, 'getApiMessages'])->name('chat.api');
 });
 
 // Admin Dashboard

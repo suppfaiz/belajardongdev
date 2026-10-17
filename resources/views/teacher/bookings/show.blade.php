@@ -87,8 +87,13 @@
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
                         <span class="font-bold text-slate-400 uppercase tracking-wider block text-[10px]">Data Murid & Orang Tua</span>
                         <h4 class="text-sm font-bold text-slate-900">{{ $booking->student->name }}</h4>
-                        <p class="text-slate-600 uppercase">{{ $booking->student->grade_level }} {{ $booking->student->class_grade ? '• ' . $booking->student->class_grade : '' }}</p>
-                        <p class="text-slate-500">Orang Tua: <span class="font-semibold text-slate-800">{{ $booking->parent->name }}</span> ({{ $booking->parent->phone }})</p>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 border-t border-slate-200/80">
+                            <p class="text-slate-500">Orang Tua: <span class="font-semibold text-slate-800">{{ $booking->parent->name }}</span> ({{ $booking->parent->phone }})</p>
+                            <a href="{{ route('teacher.messages', ['parent_id' => $booking->parent_id]) }}" class="btn-navy py-1 px-3 text-[11px] font-bold shadow-2xs inline-flex items-center gap-1.5 self-start sm:self-auto">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                                <span>Chat Orang Tua</span>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">

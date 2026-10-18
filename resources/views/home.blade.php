@@ -3,7 +3,7 @@
         <!-- ==========================================================================
              PANEL 1: HERO SECTION & QUICK SEARCH & STAT STRIP
              ========================================================================== -->
-        <section class="relative pt-6 sm:pt-10 overflow-hidden">
+        <section class="relative pt-4 sm:pt-10 overflow-hidden overflow-x-clip">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Hero Grid -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -80,28 +80,28 @@
 
                     <!-- Right Hero Teacher Photo with Floating Badges (5 cols) -->
                     <div class="lg:col-span-5 relative flex justify-center items-center">
-                        <div class="relative w-full max-w-[380px] sm:max-w-[420px] h-[420px] sm:h-[460px] flex items-end justify-center">
+                        <div class="relative w-full max-w-[340px] sm:max-w-[420px] h-[340px] sm:h-[460px] flex items-end justify-center">
                             <!-- Soft Sky Blue Backdrop Organic Curve (as seen in design) -->
-                            <div class="absolute inset-x-4 top-4 bottom-0 bg-gradient-to-b from-[#E0EDFF] via-[#EAF2FF] to-[#DBEAFE] rounded-[64px] -z-10 shadow-xs"></div>
+                            <div class="absolute inset-x-3 sm:inset-x-4 top-3 sm:top-4 bottom-0 bg-gradient-to-b from-[#E0EDFF] via-[#EAF2FF] to-[#DBEAFE] rounded-[48px] sm:rounded-[64px] -z-10 shadow-xs"></div>
 
                             <!-- Teacher Photo Cutout / Standing Portrait -->
-                            <div class="relative z-10 w-full h-[390px] sm:h-[430px] flex items-end justify-center overflow-hidden rounded-b-[64px]">
+                            <div class="relative z-10 w-full h-[310px] sm:h-[430px] flex items-end justify-center overflow-hidden rounded-b-[48px] sm:rounded-b-[64px]">
                                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
                                      alt="Guru BelajarYuk" 
                                      class="w-full h-full object-cover object-top filter contrast-[1.03]">
                             </div>
 
                             <!-- Floating Badge 1: Document Icon (Top Left) -->
-                            <div class="absolute top-12 -left-2 sm:-left-4 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-slate-100 flex items-center justify-center">
-                                <div class="w-8 h-8 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
-                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <div class="absolute top-6 left-0 sm:top-12 sm:-left-4 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2 sm:p-2.5 shadow-md border border-slate-100 flex items-center justify-center">
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
+                                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </div>
                             </div>
 
                             <!-- Floating Badge 2: Rating 4.9 ★ (Top Right) -->
-                            <div class="absolute top-8 right-2 sm:right-0 z-20 bg-white/95 backdrop-blur-md rounded-2xl py-2 px-3.5 shadow-md border border-slate-100 flex items-center gap-2">
+                            <div class="absolute top-6 right-0 sm:top-8 sm:right-0 z-20 bg-white/95 backdrop-blur-md rounded-2xl py-1.5 px-3 sm:py-2 sm:px-3.5 shadow-md border border-slate-100 flex items-center gap-2">
                                 <div class="text-left">
                                     <span class="text-[9px] text-[#64748B] font-bold block uppercase tracking-wider">Rating</span>
                                     <span class="text-xs font-black text-[#111827] flex items-center gap-1">
@@ -111,8 +111,8 @@
                             </div>
 
                             <!-- Floating Badge 3: Progres Belajar 75% (Bottom Right) -->
-                            <div class="absolute bottom-10 -right-2 sm:-right-4 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-md border border-slate-100 min-w-[145px] space-y-1.5">
-                                <div class="flex items-center justify-between text-[11px] font-bold text-[#111827]">
+                            <div class="absolute bottom-6 right-0 sm:bottom-10 sm:-right-4 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-md border border-slate-100 min-w-[130px] sm:min-w-[145px] space-y-1 sm:space-y-1.5">
+                                <div class="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[#111827]">
                                     <span>Progres Belajar</span>
                                     <span class="text-[#080F63]">75%</span>
                                 </div>
@@ -125,54 +125,54 @@
                 </div>
 
                 <!-- 4 Trust Stats Banner (Strip Card) -->
-                <div class="mt-12 bg-white rounded-2xl border border-[#E5E8F0] p-4 sm:p-5 shadow-xs">
-                    <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 text-center">
-                        <div class="p-2 sm:p-3 flex items-center justify-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5 text-[#080F63]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="mt-8 sm:mt-12 bg-white rounded-2xl border border-[#E5E8F0] p-3 sm:p-5 shadow-xs">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-0 divide-y-0 sm:divide-y sm:divide-y-0 md:divide-x divide-slate-100 text-center">
+                        <div class="p-2 sm:p-3 rounded-xl sm:rounded-none bg-slate-50/60 sm:bg-transparent flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#080F63]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                             </div>
                             <div class="text-left">
-                                <span class="text-sm sm:text-base font-extrabold text-[#111827] block leading-tight">1.000+</span>
-                                <span class="text-xs text-[#64748B] font-medium">Guru Terverifikasi</span>
+                                <span class="text-xs sm:text-base font-extrabold text-[#111827] block leading-tight">1.000+</span>
+                                <span class="text-[11px] sm:text-xs text-[#64748B] font-medium leading-tight">Guru Terverifikasi</span>
                             </div>
                         </div>
 
-                        <div class="p-2 sm:p-3 flex items-center justify-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="p-2 sm:p-3 rounded-xl sm:rounded-none bg-slate-50/60 sm:bg-transparent flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                             </div>
                             <div class="text-left">
-                                <span class="text-sm sm:text-base font-extrabold text-[#111827] block leading-tight">4.9 ★</span>
-                                <span class="text-xs text-[#64748B] font-medium">Rating Rata-Rata</span>
+                                <span class="text-xs sm:text-base font-extrabold text-[#111827] block leading-tight">4.9 ★</span>
+                                <span class="text-[11px] sm:text-xs text-[#64748B] font-medium leading-tight">Rating Rata-Rata</span>
                             </div>
                         </div>
 
-                        <div class="p-2 sm:p-3 flex items-center justify-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5 text-[#080F63]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <div class="p-2 sm:p-3 rounded-xl sm:rounded-none bg-slate-50/60 sm:bg-transparent flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#080F63]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                 </svg>
                             </div>
                             <div class="text-left">
-                                <span class="text-sm sm:text-base font-extrabold text-[#111827] block leading-tight">Fleksibel</span>
-                                <span class="text-xs text-[#64748B] font-medium">Online & Tatap Muka</span>
+                                <span class="text-xs sm:text-base font-extrabold text-[#111827] block leading-tight">Fleksibel</span>
+                                <span class="text-[11px] sm:text-xs text-[#64748B] font-medium leading-tight">Online & Tatap Muka</span>
                             </div>
                         </div>
 
                         <!-- Stat 4: Pantau Progres Real-Time -->
-                        <div class="p-2 sm:p-3 flex items-center justify-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5 text-[#080F63]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <div class="p-2 sm:p-3 rounded-xl sm:rounded-none bg-slate-50/60 sm:bg-transparent flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#080F63]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                 </svg>
                             </div>
                             <div class="text-left">
-                                <span class="text-sm sm:text-base font-extrabold text-[#111827] block leading-tight">Pantau Progres</span>
-                                <span class="text-xs text-[#64748B] font-medium">Real-Time</span>
+                                <span class="text-xs sm:text-base font-extrabold text-[#111827] block leading-tight">Pantau Progres</span>
+                                <span class="text-[11px] sm:text-xs text-[#64748B] font-medium leading-tight">Real-Time</span>
                             </div>
                         </div>
                     </div>
@@ -195,9 +195,9 @@
                     </p>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-3">
+                <div class="flex items-center justify-between sm:justify-end gap-3 overflow-x-auto no-scrollbar py-1">
                     <!-- Filter Pills -->
-                    <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-full border border-slate-200/80">
+                    <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-full border border-slate-200/80 shrink-0">
                         <button type="button" 
                                 @click="activeGrade = 'all'"
                                 :class="activeGrade === 'all' ? 'bg-[#080F63] text-white shadow-xs font-bold' : 'text-slate-600 hover:text-[#080F63] font-medium'"
@@ -225,7 +225,7 @@
                     </div>
 
                     <!-- Direct link to Full Catalogue -->
-                    <a href="{{ route('teachers.search') }}" class="text-xs sm:text-sm font-bold text-[#080F63] hover:text-[#050A4F] inline-flex items-center gap-1 group">
+                    <a href="{{ route('teachers.search') }}" class="text-xs sm:text-sm font-bold text-[#080F63] hover:text-[#050A4F] inline-flex items-center gap-1 group shrink-0">
                         <span>Lihat Semua Guru</span>
                         <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </a>

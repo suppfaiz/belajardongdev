@@ -161,12 +161,12 @@
                                 default => 'Dijadwalkan'
                             };
                         @endphp
-                        <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E5E8F0] hover:border-slate-300 transition flex items-center justify-between gap-4">
-                            <div class="flex items-center gap-4 min-w-0">
+                        <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E5E8F0] hover:border-slate-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                            <div class="flex items-center gap-3.5 min-w-0">
                                 <!-- Date Badge Box -->
-                                <div class="w-14 h-14 rounded-2xl bg-white border border-[#E5E8F0] shadow-xs flex flex-col items-center justify-center shrink-0">
-                                    <span class="text-base font-extrabold text-[#080F63] leading-none">{{ $dt->format('d') }}</span>
-                                    <span class="text-[11px] font-semibold text-[#747B8C] uppercase mt-0.5 leading-none">{{ $dayName }}</span>
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-[#E5E8F0] shadow-xs flex flex-col items-center justify-center shrink-0">
+                                    <span class="text-sm sm:text-base font-extrabold text-[#080F63] leading-none">{{ $dt->format('d') }}</span>
+                                    <span class="text-[10px] sm:text-[11px] font-semibold text-[#747B8C] uppercase mt-0.5 leading-none">{{ $dayName }}</span>
                                 </div>
                                 
                                 <div class="min-w-0">
@@ -180,13 +180,13 @@
                                         {{ substr($lesson->start_time, 0, 5) }} - {{ substr($lesson->end_time, 0, 5) }} • 
                                         Guru: <span class="font-medium text-[#171923]">{{ $lesson->teacher->name }}</span>
                                     </p>
-                                    <p class="text-[11px] text-slate-500 mt-0.5">
+                                    <p class="text-[11px] text-slate-500 mt-0.5 font-semibold">
                                         Rp {{ number_format($lesson->total_amount, 0, ',', '.') }}
                                     </p>
                                 </div>
                             </div>
 
-                            <div class="flex flex-col items-end gap-2 shrink-0">
+                            <div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200/60 w-full sm:w-auto">
                                 <span class="badge-status {{ $badgeClass }}">
                                     {{ $badgeLabel }}
                                 </span>

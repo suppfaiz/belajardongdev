@@ -280,3 +280,17 @@ body {
 .sidebar-scroll::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.4);
 }
+
+/* Mobile Scrollbar Hiding & Safe Areas */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.safe-pb {
+    padding-bottom: env(safe-area-inset-bottom, 12px);
+}
+

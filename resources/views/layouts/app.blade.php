@@ -21,7 +21,7 @@
     <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-full flex flex-col bg-[#F3F5FA] text-[#171923] font-sans antialiased selection:bg-[#080F63] selection:text-white">
+<body class="min-h-full flex flex-col bg-[#F3F5FA] text-[#171923] font-sans antialiased selection:bg-[#080F63] selection:text-white pb-20 md:pb-0">
     <!-- Navbar BelajarYuk with Smooth Animated Blue Underlines -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E5E8F0] shadow-2xs transition-all" x-data="{ mobileMenuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -249,5 +249,8 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <x-mobile-bottom-nav />
 </body>
 </html>

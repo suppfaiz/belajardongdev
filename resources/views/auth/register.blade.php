@@ -1,5 +1,5 @@
 <x-layouts.app title="Daftar Akun Baru — BelajarYuk">
-    <div class="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{ 
+    <div class="min-h-[85vh] flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{ 
         role: '{{ old('role', 'parent') }}',
         showPassword: false
     }">
@@ -8,7 +8,7 @@
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-xl w-full space-y-6 relative z-10">
-            <div class="p-8 sm:p-10 bg-white shadow-xl space-y-6 border border-[#E5E8F0] rounded-2xl">
+            <div class="p-5 sm:p-10 bg-white shadow-xl space-y-6 border border-[#E5E8F0] rounded-2xl">
                 <!-- Brand & Header -->
                 <div class="text-center space-y-2">
                     <a href="{{ route('home') }}" class="inline-block transform hover:scale-105 transition">

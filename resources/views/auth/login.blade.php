@@ -1,12 +1,12 @@
 <x-layouts.app title="Masuk ke Akun — BelajarYuk">
-    <div class="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{ showPassword: false }">
+    <div class="min-h-[85vh] flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{ showPassword: false }">
         <!-- Ambient decorative blur in Deep Navy & Blue -->
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#080F63]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-md w-full space-y-6 relative z-10">
             <!-- Main Login Panel -->
-            <div class="p-8 sm:p-10 bg-white shadow-xl space-y-6 border border-[#E5E8F0] rounded-2xl">
+            <div class="p-5 sm:p-10 bg-white shadow-xl space-y-6 border border-[#E5E8F0] rounded-2xl">
                 <!-- Brand & Title Header -->
                 <div class="text-center space-y-2">
                     <a href="{{ route('home') }}" class="inline-block transform hover:scale-105 transition">

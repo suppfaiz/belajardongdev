@@ -23,77 +23,92 @@
             </div>
         </div>
 
-        <!-- 5 Dropdown Filter Bar + Sort -->
-        <form action="{{ $searchAction }}" method="GET" class="bg-white rounded-2xl border border-[#E5E8F0] p-4 sm:p-5 shadow-xs space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-                <!-- Filter Left: 5 Dropdown Buttons -->
-                <div class="flex flex-wrap items-center gap-2.5 flex-1 min-w-[280px]">
+        <!-- Search Keyword & Horizontal Mobile Filter Chips -->
+        <form action="{{ $searchAction }}" method="GET" class="bg-white rounded-2xl border border-[#E5E8F0] p-3.5 sm:p-5 shadow-xs space-y-3">
+            <!-- Search Keyword Bar -->
+            <div class="relative w-full">
+                <input type="text" 
+                       name="q" 
+                       value="{{ request('q') }}"
+                       placeholder="Cari nama guru, mata pelajaran, atau topik belajar..." 
+                       class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-full pl-11 pr-24 py-2.5 text-xs sm:text-sm text-[#171923] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63] transition shadow-2xs">
+                <svg class="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[#080F63] hover:bg-[#050A4F] text-white text-xs font-bold rounded-full transition flex items-center gap-1 cursor-pointer">
+                    <span>Cari</span>
+                </button>
+            </div>
+
+            <!-- Horizontal Swipeable Filter Chips on Mobile / Flex-wrap on Desktop -->
+            <div class="flex items-center justify-between gap-2.5 overflow-x-auto no-scrollbar py-1">
+                <div class="flex items-center gap-2 shrink-0 md:flex-wrap">
                     <!-- 1. Mata Pelajaran -->
-                    <div class="relative">
+                    <div class="relative shrink-0">
                         <select name="subject" onchange="this.form.submit()" 
-                                class="btn-white-pill text-xs sm:text-sm py-2 px-3.5 pr-8 appearance-none bg-white cursor-pointer focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63]">
-                            <option value="">Semua Mata Pelajaran</option>
+                                class="btn-white-pill text-xs py-2 px-3 pr-7 appearance-none cursor-pointer shrink-0 transition {{ request('subject') ? 'border-[#080F63] bg-blue-50/80 font-bold text-[#080F63] ring-1 ring-[#080F63]/30' : 'bg-white' }}">
+                            <option value="">Semua Mapel</option>
                             @foreach($subjects as $subj)
                                 <option value="{{ $subj->slug }}" {{ request('subject') == $subj->slug ? 'selected' : '' }}>
                                     {{ $subj->name }}
                                 </option>
                             @endforeach
                         </select>
-                        <svg class="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        <svg class="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none {{ request('subject') ? 'text-[#080F63]' : 'text-slate-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                     </div>
 
                     <!-- 2. Jenjang -->
-                    <div class="relative">
+                    <div class="relative shrink-0">
                         <select name="grade" onchange="this.form.submit()" 
-                                class="btn-white-pill text-xs sm:text-sm py-2 px-3.5 pr-8 appearance-none bg-white cursor-pointer focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63]">
+                                class="btn-white-pill text-xs py-2 px-3 pr-7 appearance-none cursor-pointer shrink-0 transition {{ request('grade') ? 'border-[#080F63] bg-blue-50/80 font-bold text-[#080F63] ring-1 ring-[#080F63]/30' : 'bg-white' }}">
                             <option value="">Semua Jenjang</option>
                             <option value="sd" {{ request('grade') == 'sd' ? 'selected' : '' }}>SD (Kelas 1-6)</option>
                             <option value="smp" {{ request('grade') == 'smp' ? 'selected' : '' }}>SMP (Kelas 7-9)</option>
                             <option value="sma" {{ request('grade') == 'sma' ? 'selected' : '' }}>SMA (Kelas 10-12)</option>
                             <option value="ujian" {{ request('grade') == 'ujian' ? 'selected' : '' }}>Persiapan UTBK</option>
                         </select>
-                        <svg class="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        <svg class="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none {{ request('grade') ? 'text-[#080F63]' : 'text-slate-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                     </div>
 
                     <!-- 3. Harga -->
-                    <div class="relative">
+                    <div class="relative shrink-0">
                         <select name="max_price" onchange="this.form.submit()" 
-                                class="btn-white-pill text-xs sm:text-sm py-2 px-3.5 pr-8 appearance-none bg-white cursor-pointer focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63]">
+                                class="btn-white-pill text-xs py-2 px-3 pr-7 appearance-none cursor-pointer shrink-0 transition {{ request('max_price') ? 'border-[#080F63] bg-blue-50/80 font-bold text-[#080F63] ring-1 ring-[#080F63]/30' : 'bg-white' }}">
                             <option value="">Semua Harga</option>
-                            <option value="100000" {{ request('max_price') == '100000' ? 'selected' : '' }}>&le; Rp 100.000/jam</option>
-                            <option value="150000" {{ request('max_price') == '150000' ? 'selected' : '' }}>&le; Rp 150.000/jam</option>
-                            <option value="200000" {{ request('max_price') == '200000' ? 'selected' : '' }}>&le; Rp 200.000/jam</option>
+                            <option value="100000" {{ request('max_price') == '100000' ? 'selected' : '' }}>&le; 100rb/jam</option>
+                            <option value="150000" {{ request('max_price') == '150000' ? 'selected' : '' }}>&le; 150rb/jam</option>
+                            <option value="200000" {{ request('max_price') == '200000' ? 'selected' : '' }}>&le; 200rb/jam</option>
                         </select>
-                        <svg class="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        <svg class="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none {{ request('max_price') ? 'text-[#080F63]' : 'text-slate-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                     </div>
 
                     <!-- 4. Rating -->
-                    <div class="relative">
+                    <div class="relative shrink-0">
                         <select name="rating" onchange="this.form.submit()" 
-                                class="btn-white-pill text-xs sm:text-sm py-2 px-3.5 pr-8 appearance-none bg-white cursor-pointer focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63]">
+                                class="btn-white-pill text-xs py-2 px-3 pr-7 appearance-none cursor-pointer shrink-0 transition {{ request('rating') ? 'border-[#080F63] bg-blue-50/80 font-bold text-[#080F63] ring-1 ring-[#080F63]/30' : 'bg-white' }}">
                             <option value="">Semua Rating</option>
-                            <option value="4.8" {{ request('rating') == '4.8' ? 'selected' : '' }}>★ 4.8 Ke Atas</option>
-                            <option value="4.5" {{ request('rating') == '4.5' ? 'selected' : '' }}>★ 4.5 Ke Atas</option>
-                            <option value="4.0" {{ request('rating') == '4.0' ? 'selected' : '' }}>★ 4.0 Ke Atas</option>
+                            <option value="4.8" {{ request('rating') == '4.8' ? 'selected' : '' }}>★ 4.8+</option>
+                            <option value="4.5" {{ request('rating') == '4.5' ? 'selected' : '' }}>★ 4.5+</option>
+                            <option value="4.0" {{ request('rating') == '4.0' ? 'selected' : '' }}>★ 4.0+</option>
                         </select>
-                        <svg class="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        <svg class="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none {{ request('rating') ? 'text-[#080F63]' : 'text-slate-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                     </div>
 
                     <!-- 5. Metode Les -->
-                    <div class="relative">
+                    <div class="relative shrink-0">
                         <select name="method" onchange="this.form.submit()" 
-                                class="btn-white-pill text-xs sm:text-sm py-2 px-3.5 pr-8 appearance-none bg-white cursor-pointer focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63]">
+                                class="btn-white-pill text-xs py-2 px-3 pr-7 appearance-none cursor-pointer shrink-0 transition {{ request('method') ? 'border-[#080F63] bg-blue-50/80 font-bold text-[#080F63] ring-1 ring-[#080F63]/30' : 'bg-white' }}">
                             <option value="">Semua Metode</option>
                             <option value="online" {{ request('method') == 'online' ? 'selected' : '' }}>Online</option>
                             <option value="tatap_muka" {{ request('method') == 'tatap_muka' ? 'selected' : '' }}>Tatap Muka</option>
                         </select>
-                        <svg class="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        <svg class="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none {{ request('method') ? 'text-[#080F63]' : 'text-slate-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                     </div>
 
                     @if(request()->hasAny(['subject', 'grade', 'max_price', 'rating', 'method', 'q', 'sort']))
-                        <a href="{{ $searchAction }}" class="text-xs font-bold text-rose-600 hover:text-rose-800 hover:underline px-2 flex items-center gap-1">
+                        <a href="{{ $searchAction }}" class="text-xs font-bold text-rose-600 hover:text-rose-800 hover:underline px-2.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 flex items-center gap-1 shrink-0">
                             <span>✕</span>
-                            <span>Reset Filter</span>
+                            <span>Reset</span>
                         </a>
                     @endif
                 </div>
@@ -101,13 +116,13 @@
                 <!-- Filter Right: Sort by Relevansi -->
                 <div class="relative shrink-0">
                     <select name="sort" onchange="this.form.submit()" 
-                            class="btn-white-pill text-xs sm:text-sm py-2 px-3.5 pr-8 appearance-none bg-slate-50 cursor-pointer border-[#E5E8F0]">
-                        <option value="relevance" {{ request('sort') == 'relevance' ? 'selected' : '' }}>Urutkan: Relevansi</option>
+                            class="btn-white-pill text-xs py-2 px-3 pr-7 appearance-none bg-slate-50 cursor-pointer border-[#E5E8F0] shrink-0 font-medium">
+                        <option value="relevance" {{ request('sort') == 'relevance' ? 'selected' : '' }}>Relevansi</option>
                         <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Rating Tertinggi</option>
                         <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Harga Terendah</option>
                         <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Harga Tertinggi</option>
                     </select>
-                    <svg class="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    <svg class="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </div>
             </div>
         </form>

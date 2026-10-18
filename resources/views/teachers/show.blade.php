@@ -5,7 +5,7 @@
 @endphp
 
 <x-dynamic-component :component="$layoutComponent" title="{{ $teacherProfile->user->name }} — Profil Guru BelajarYuk">
-    <div class="{{ $isDashboard ? 'space-y-6 max-w-7xl mx-auto' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6' }}" x-data="{ activeTab: 'tentang' }">
+    <div class="{{ $isDashboard ? 'space-y-6 max-w-7xl mx-auto pb-28 md:pb-8' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-28 md:pb-8 space-y-6' }}" x-data="{ activeTab: 'tentang' }">
         <!-- Back Navigation Button -->
         <div>
             <a href="{{ $backUrl }}" class="inline-flex items-center gap-2 text-xs font-bold text-[#080F63] hover:underline bg-white border border-[#E5E8F0] px-3.5 py-1.5 rounded-full shadow-2xs">
@@ -83,7 +83,7 @@
         </div>
 
         <!-- 2. Menu Tabulasi Konten (Tentang, Mata Pelajaran, Jadwal, Ulasan) -->
-        <div class="flex items-center gap-2 border-b border-[#E5E8F0] pb-2 overflow-x-auto">
+        <div class="flex items-center gap-2 border-b border-[#E5E8F0] pb-2 overflow-x-auto no-scrollbar">
             <button type="button" 
                     @click="activeTab = 'tentang'" 
                     :class="activeTab === 'tentang' ? 'border-[#080F63] text-[#080F63] font-bold' : 'border-transparent text-[#747B8C] hover:text-[#171923] font-medium'"
@@ -291,6 +291,37 @@
                         Pesan Guru Sekarang &rarr;
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sticky Action Bar (Native App Style) -->
+    <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E5E8F0] px-4 py-3 md:hidden shadow-[0_-4px_20px_rgba(8,15,99,0.08)] safe-pb">
+        <div class="flex items-center justify-between gap-3 max-w-lg mx-auto">
+            <div class="min-w-0">
+                <span class="text-[10px] text-slate-500 font-medium block leading-tight">Tarif Bimbingan</span>
+                <div class="flex items-baseline gap-1">
+                    <span class="text-base font-black text-[#080F63] tracking-tight">
+                        Rp {{ number_format($teacherProfile->hourly_rate, 0, ',', '.') }}
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-medium">/jam</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('parent.messages', ['teacher_id' => $teacherProfile->user_id]) }}" 
+                   class="p-2.5 rounded-xl border border-[#080F63] text-[#080F63] hover:bg-blue-50 active:scale-95 transition flex items-center justify-center shrink-0" 
+                   title="Chat Guru">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </a>
+                
+                <a href="{{ route('bookings.create', $teacherProfile->id) }}" 
+                   class="bg-[#080F63] hover:bg-[#050A4F] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-md shadow-[#080F63]/25 active:scale-95 transition flex items-center gap-1.5">
+                    <span>Pesan Guru</span>
+                    <span class="text-sm font-bold">&rarr;</span>
+                </a>
             </div>
         </div>
     </div>

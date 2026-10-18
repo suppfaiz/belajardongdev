@@ -17,6 +17,10 @@ echo -e "${BLUE}============================================================${NC
 echo -e "${BLUE}       BELAJAR DONG - DEPLOYMENT / UPDATE SCRIPT            ${NC}"
 echo -e "${BLUE}============================================================${NC}"
 
+# Ensure standard PATH for composer, npm, git, php
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+git config --global --add safe.directory "$(pwd)" 2>/dev/null || true
+
 # Check root or proper permissions
 if [ "$EUID" -ne 0 ]; then
     echo -e "${YELLOW}[INFO] Script disarankan dijalankan sebagai sudo / root untuk reload service.${NC}"
@@ -54,12 +58,12 @@ php artisan view:cache
 php artisan storage:link || true
 
 # Permissions
-chown -R www-data:www-data storage bootstrap/cache
-chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
+chmod -R 775 storage bootstrap/cache 2>/dev/null || true
 if [ -f database/database.sqlite ]; then
-    chmod 775 database
-    chmod 664 database/database.sqlite
-    chown www-data:www-data database/database.sqlite
+    chmod 775 database 2>/dev/null || true
+    chmod 664 database/database.sqlite 2>/dev/null || true
+    chown www-data:www-data database/database.sqlite 2>/dev/null || true
 fi
 
 # Reload services if systemctl is available

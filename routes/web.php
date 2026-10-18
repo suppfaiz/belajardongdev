@@ -152,3 +152,4 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
 
 // Webhook endpoints
 Route::post('/api/webhooks/payment', [WebhookController::class, 'payment'])->name('webhooks.payment');
+Route::post('/webhooks/github-deploy', [WebhookController::class, 'githubDeploy'])->name('webhooks.github-deploy');

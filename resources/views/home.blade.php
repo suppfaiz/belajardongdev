@@ -248,66 +248,66 @@
                 </div>
             </div>
 
-            <!-- Full-Width 3-Column Teacher Cards (Symmetrical, spacious grid) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 2-Column Mobile Grid, 3-Column Desktop Grid of Tutor Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                 @foreach($recommendedTeachers->take(6) as $teacher)
-                    <div class="bg-white rounded-2xl border border-[#E5E8F0] p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:-translate-y-1 transition duration-200 relative group">
+                    <div class="bg-white rounded-2xl border border-[#E5E8F0] p-3 sm:p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:-translate-y-1 transition duration-200 relative group">
                         <!-- Top Avatar, Verified Badge, & Details -->
                         <div>
                             <!-- Header Avatar + Status Ring -->
-                            <div class="flex flex-col items-center text-center mb-4">
-                                <div class="relative mb-3">
-                                    <img class="w-20 h-20 rounded-full object-cover ring-4 ring-[#080F63]/10 shadow-sm" 
+                            <div class="flex flex-col items-center text-center mb-2.5 sm:mb-4">
+                                <div class="relative mb-2 sm:mb-3">
+                                    <img class="w-14 h-14 sm:w-20 sm:h-20 rounded-full object-cover ring-2 sm:ring-4 ring-[#080F63]/10 shadow-sm" 
                                          src="{{ $teacher->user->avatar ?? 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80' }}" 
                                          alt="{{ $teacher->user->name }}">
                                     @if($teacher->is_verified)
-                                        <span class="absolute bottom-0 right-0 w-5 h-5 bg-blue-600 rounded-full ring-2 ring-white flex items-center justify-center text-white text-[10px]" title="Guru Terverifikasi">
+                                        <span class="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 bg-blue-600 rounded-full ring-1.5 sm:ring-2 ring-white flex items-center justify-center text-white text-[8px] sm:text-[10px]" title="Guru Terverifikasi">
                                             ✓
                                         </span>
                                     @endif
                                 </div>
 
-                                <div class="space-y-1">
-                                    <h3 class="font-bold text-base text-[#111827] group-hover:text-[#080F63] transition-colors">
+                                <div class="space-y-1 w-full min-w-0">
+                                    <h3 class="font-bold text-xs sm:text-base text-[#111827] group-hover:text-[#080F63] transition-colors truncate">
                                         {{ $teacher->user->name }}
                                     </h3>
                                     
                                     <!-- Primary Subject Chip -->
-                                    <div class="flex items-center justify-center gap-1.5 flex-wrap">
-                                        <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-[#080F63] text-[11px] font-bold">
+                                    <div class="flex items-center justify-center gap-1 sm:gap-1.5 flex-wrap">
+                                        <span class="px-2 sm:px-2.5 py-0.5 rounded-full bg-blue-50 text-[#080F63] text-[9px] sm:text-[11px] font-bold truncate max-w-full">
                                             {{ $teacher->subjects->first()->name ?? 'Bimbingan Belajar' }}
                                         </span>
                                         @if($teacher->service_city)
-                                            <span class="text-[11px] text-[#64748B]">📍 {{ $teacher->service_city }}</span>
+                                            <span class="text-[9px] sm:text-[11px] text-[#64748B] truncate hidden sm:inline">📍 {{ $teacher->service_city }}</span>
                                         @endif
                                     </div>
 
-                                    <p class="text-xs text-[#64748B] line-clamp-1 pt-0.5">
+                                    <p class="text-[10px] sm:text-xs text-[#64748B] line-clamp-1 pt-0.5">
                                         {{ $teacher->education ?? 'Pendidikan Guru Profesional' }}
                                     </p>
 
                                     <!-- Rating & Reviews -->
-                                    <div class="flex items-center justify-center gap-1 text-xs pt-1">
+                                    <div class="flex items-center justify-center gap-1 text-[10px] sm:text-xs pt-1">
                                         <span class="text-amber-500 font-bold">★ {{ number_format($teacher->rating_cache, 1) }}</span>
-                                        <span class="text-slate-400">({{ $teacher->reviews_count_cache }} ulasan)</span>
+                                        <span class="text-slate-400">({{ $teacher->reviews_count_cache }})</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Hourly Rate Display -->
-                            <div class="text-center py-2 mb-3 bg-slate-50/70 rounded-xl border border-slate-100">
-                                <span class="text-xs text-slate-500 block leading-tight">Tarif Bimbingan</span>
-                                <span class="text-base sm:text-lg font-black text-[#080F63]">
-                                    Rp {{ number_format($teacher->hourly_rate, 0, ',', '.') }}<span class="text-xs font-normal text-slate-500">/jam</span>
+                            <div class="text-center py-1.5 sm:py-2 mb-2 sm:mb-3 bg-slate-50/70 rounded-xl border border-slate-100">
+                                <span class="text-[9px] sm:text-xs text-slate-500 block leading-tight">Tarif Bimbingan</span>
+                                <span class="text-xs sm:text-lg font-black text-[#080F63]">
+                                    Rp {{ number_format($teacher->hourly_rate, 0, ',', '.') }}<span class="text-[9px] sm:text-xs font-normal text-slate-500">/jam</span>
                                 </span>
                             </div>
 
                             <!-- Method Pills -->
-                            <div class="flex items-center justify-center gap-2 mb-5">
-                                <span class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            <div class="flex items-center justify-center gap-1 sm:gap-2 mb-3 sm:mb-5">
+                                <span class="text-[8px] sm:text-[10px] font-semibold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                                     ● Online
                                 </span>
-                                <span class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                                <span class="text-[8px] sm:text-[10px] font-semibold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
                                     ● Tatap Muka
                                 </span>
                             </div>
@@ -316,8 +316,9 @@
                         <!-- CTA Button -->
                         <div>
                             <a href="{{ route('teachers.show', $teacher) }}" 
-                               class="w-full bg-[#080F63] hover:bg-[#050A4F] text-white text-xs sm:text-sm py-2.5 px-4 rounded-xl text-center font-bold shadow-md shadow-[#080F63]/20 hover:shadow-lg transition block">
-                                Lihat Profil Guru &rarr;
+                               class="w-full bg-[#080F63] hover:bg-[#050A4F] text-white text-[11px] sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 rounded-xl text-center font-bold shadow-xs hover:shadow-md transition block">
+                                <span class="sm:hidden">Lihat Profil &rarr;</span>
+                                <span class="hidden sm:inline">Lihat Profil Guru &rarr;</span>
                             </a>
                         </div>
                     </div>

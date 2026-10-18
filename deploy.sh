@@ -21,36 +21,30 @@ echo -e "${BLUE}============================================================${NC
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 git config --global --add safe.directory "$(pwd)" 2>/dev/null || true
 
-# Check root or proper permissions
-if [ "$EUID" -ne 0 ]; then
-    echo -e "${YELLOW}[INFO] Script disarankan dijalankan sebagai sudo / root untuk reload service.${NC}"
-fi
+# Always ensure app is UP in case of previous interrupted deploy
+php artisan up 2>/dev/null || true
 
-# 1. Maintenance Mode
-echo -e "${YELLOW}[1/6] Mengaktifkan Maintenance Mode...${NC}"
-php artisan down --render="errors::503" || true
-
-# 2. Pull Git Repository
-echo -e "${YELLOW}[2/6] Menarik update kode terbaru dari repository...${NC}"
+# 1. Pull Git Repository
+echo -e "${YELLOW}[1/5] Menarik update kode terbaru dari repository...${NC}"
 git reset --hard
 git pull origin main
 
-# 3. Install PHP Dependencies
-echo -e "${YELLOW}[3/6] Memperbarui dependensi Composer...${NC}"
+# 2. Install PHP Dependencies
+echo -e "${YELLOW}[2/5] Memperbarui dependensi Composer...${NC}"
 export COMPOSER_ALLOW_SUPERUSER=1
 composer install --no-dev --optimize-autoloader --no-interaction
 
-# 4. Run Database Migrations
-echo -e "${YELLOW}[4/6] Menjalankan migrasi database...${NC}"
+# 3. Run Database Migrations
+echo -e "${YELLOW}[3/5] Menjalankan migrasi database...${NC}"
 php artisan migrate --force
 
-# 5. Build Frontend Assets
-echo -e "${YELLOW}[5/6] Mengompilasi aset frontend (Vite)...${NC}"
+# 4. Build Frontend Assets
+echo -e "${YELLOW}[4/5] Mengompilasi aset frontend (Vite)...${NC}"
 npm install --ignore-scripts
 npm run build
 
-# 6. Optimize and Clear Cache
-echo -e "${YELLOW}[6/6] Memperbarui cache aplikasi Laravel...${NC}"
+# 5. Optimize and Clear Cache
+echo -e "${YELLOW}[5/5] Memperbarui cache aplikasi Laravel...${NC}"
 php artisan optimize:clear
 php artisan config:cache
 php artisan route:cache

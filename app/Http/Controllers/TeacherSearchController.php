@@ -86,21 +86,47 @@ class TeacherSearchController extends Controller
         }
 
         $radius = (float) $request->query('radius', 10); // default 10 km
+        $keyword = trim((string) $request->query('q'));
+        $q = $keyword;
         $selectedSubject = $request->query('subject');
         $selectedGrade = $request->query('grade'); // sd, smp, sma, ujian
         $minPrice = $request->filled('min_price') ? (int) $request->query('min_price') : null;
         $maxPrice = $request->filled('max_price') ? (int) $request->query('max_price') : null;
         $minRating = $request->filled('rating') ? (float) $request->query('rating') : null;
         $selectedDay = $request->filled('day') ? (int) $request->query('day') : null;
-        $sortBy = $request->query('sort', 'distance'); // distance, rating, price_low, price_high
+        $sortBy = $request->query('sort', 'distance'); // distance, rating, price_low, price_high, relevance
+
+        // Check if user specifically requested a location filter
+        $hasExplicitLocation = $request->filled('city_id')
+            || $request->filled('district_id')
+            || $request->filled('village_id')
+            || ($request->filled('lat') && $request->filled('lon'));
 
         // Start Query with Verified Teachers only
         $query = TeacherProfile::with(['user', 'subjects', 'availabilitySlots', 'city', 'district', 'village'])
             ->verified();
 
-        // Spatial radius search (filters by both parent radius and teacher max travel distance)
-        if ($lat !== null && $lon !== null) {
+        // Spatial radius search (only enforce strict radius boundary when location is explicitly selected)
+        if ($hasExplicitLocation && $lat !== null && $lon !== null) {
             $query->withinRadius($lat, $lon, $radius);
+        }
+
+        // Keyword search across user name, headline, bio, education, service city/district, and subjects
+        if ($keyword !== '') {
+            $keywordLower = strtolower($keyword);
+            $query->where(function ($sub) use ($keywordLower): void {
+                $sub->whereHas('user', function ($uq) use ($keywordLower): void {
+                    $uq->whereRaw('LOWER(name) LIKE ?', ["%{$keywordLower}%"]);
+                })
+                    ->orWhereRaw("LOWER(COALESCE(headline, '')) LIKE ?", ["%{$keywordLower}%"])
+                    ->orWhereRaw("LOWER(COALESCE(bio, '')) LIKE ?", ["%{$keywordLower}%"])
+                    ->orWhereRaw("LOWER(COALESCE(education, '')) LIKE ?", ["%{$keywordLower}%"])
+                    ->orWhereRaw("LOWER(COALESCE(service_city, '')) LIKE ?", ["%{$keywordLower}%"])
+                    ->orWhereRaw("LOWER(COALESCE(service_district, '')) LIKE ?", ["%{$keywordLower}%"])
+                    ->orWhereHas('subjects', function ($sq) use ($keywordLower): void {
+                        $sq->whereRaw('LOWER(name) LIKE ?', ["%{$keywordLower}%"]);
+                    });
+            });
         }
 
         // Subject filter
@@ -155,11 +181,18 @@ class TeacherSearchController extends Controller
                 $query->orderByDesc('hourly_rate');
                 break;
             case 'distance':
-            default:
-                if ($lat !== null && $lon !== null) {
+                if ($hasExplicitLocation && $lat !== null && $lon !== null) {
                     $query->orderBy('distance_km');
                 } else {
-                    $query->orderByDesc('rating_cache');
+                    $query->orderByDesc('rating_cache')->orderByDesc('reviews_count_cache');
+                }
+                break;
+            case 'relevance':
+            default:
+                if ($hasExplicitLocation && $lat !== null && $lon !== null) {
+                    $query->orderBy('distance_km');
+                } else {
+                    $query->orderByDesc('rating_cache')->orderByDesc('reviews_count_cache');
                 }
                 break;
         }
@@ -195,7 +228,9 @@ class TeacherSearchController extends Controller
             'minRating',
             'selectedDay',
             'sortBy',
-            'isDashboard'
+            'isDashboard',
+            'keyword',
+            'q'
         ));
     }
 

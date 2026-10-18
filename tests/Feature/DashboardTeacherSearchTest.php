@@ -121,4 +121,28 @@ class DashboardTeacherSearchTest extends TestCase
         $response->assertSee(route('parent.teachers.search'));
         $response->assertSee('Matematika');
     }
+
+    public function test_search_teachers_by_keyword_matches_teacher_name(): void
+    {
+        $response = $this->get(route('teachers.search', ['q' => 'Siti']));
+
+        $response->assertStatus(200);
+        $response->assertSee($this->teacher->name);
+    }
+
+    public function test_search_teachers_by_keyword_matches_subject_name(): void
+    {
+        $response = $this->get(route('teachers.search', ['q' => 'Matematika']));
+
+        $response->assertStatus(200);
+        $response->assertSee($this->teacher->name);
+    }
+
+    public function test_search_teachers_by_keyword_excludes_non_matching_teachers(): void
+    {
+        $response = $this->get(route('teachers.search', ['q' => 'BiologiMolekulerSuperUnikXYZ']));
+
+        $response->assertStatus(200);
+        $response->assertDontSee($this->teacher->name);
+    }
 }

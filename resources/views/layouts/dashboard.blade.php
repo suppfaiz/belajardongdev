@@ -123,16 +123,24 @@
         <!-- Main Column Area -->
         <div class="flex-1 flex flex-col min-w-0 bg-[#F3F5FA] h-full overflow-hidden">
             <!-- Topbar Header -->
-            <header class="h-20 bg-white border-b border-[#E5E8F0] shrink-0 z-30 flex items-center justify-between px-4 sm:px-6 lg:px-8 shadow-xs">
-                <!-- Left: Hamburger (Mobile) + Global Search Bar -->
-                <div class="flex items-center gap-4 flex-1 max-w-2xl">
-                    <button @click="sidebarOpen = true" class="lg:hidden p-2 text-slate-600 rounded-xl hover:bg-slate-100 transition" aria-label="Buka menu navigasi">
+            <header class="h-16 sm:h-20 bg-white border-b border-[#E5E8F0] shrink-0 z-30 flex items-center justify-between px-3 sm:px-6 lg:px-8 shadow-xs">
+                <!-- Left: Hamburger (Mobile) + Logo on Mobile -->
+                <div class="flex items-center gap-2.5 sm:gap-4 min-w-0">
+                    <button @click="sidebarOpen = true" class="lg:hidden p-2 text-slate-700 hover:text-[#080F63] rounded-xl hover:bg-slate-100 transition shrink-0" aria-label="Buka menu navigasi">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
 
-                    <form action="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" method="GET" class="relative w-full max-w-lg">
+                    <!-- BelajarYuk Brand Logo on Mobile Header -->
+                    <a href="{{ route('home') }}" class="lg:hidden flex items-center shrink-0">
+                        <x-logo size="sm" />
+                    </a>
+                </div>
+
+                <!-- Center: Global Search Bar (Desktop only) -->
+                <div class="hidden md:flex items-center flex-1 max-w-lg mx-6">
+                    <form action="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" method="GET" class="relative w-full">
                         <div class="relative flex items-center">
                             <svg class="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -147,16 +155,25 @@
                 </div>
 
                 <!-- Right: Notifications + User Profile -->
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+                    <!-- Quick Search Button on Mobile -->
+                    <a href="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" 
+                       class="md:hidden p-2 text-slate-600 hover:text-[#080F63] rounded-full bg-[#F3F5FA] hover:bg-slate-100 transition" 
+                       title="Cari Guru">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </a>
+
                     @auth
                         <!-- Notification Bell with Red Badge -->
                         <div class="relative">
-                            <button type="button" class="p-2.5 text-slate-600 hover:text-[#080F63] rounded-full bg-[#F3F5FA] hover:bg-slate-100 transition relative">
+                            <button type="button" class="p-2 sm:p-2.5 text-slate-600 hover:text-[#080F63] rounded-full bg-[#F3F5FA] hover:bg-slate-100 transition relative">
                                 <span class="sr-only">Notifikasi</span>
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                                 </svg>
-                                <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white"></span>
+                                <span class="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 w-2 sm:w-2.5 h-2 sm:h-2.5 bg-red-500 rounded-full ring-2 ring-white"></span>
                             </button>
                         </div>
 
@@ -173,8 +190,8 @@
                                 default => 'Orang Tua',
                             };
                         @endphp
-                        <a href="{{ $profileRoute }}" class="flex items-center gap-3 pl-2 pr-1 py-1 rounded-full hover:bg-slate-50 transition border border-transparent hover:border-slate-200">
-                            <img class="w-10 h-10 rounded-full object-cover ring-2 ring-[#080F63]/20" 
+                        <a href="{{ $profileRoute }}" class="flex items-center gap-2 sm:gap-3 p-1 sm:pl-2 sm:pr-1 sm:py-1 rounded-full hover:bg-slate-50 transition border border-transparent hover:border-slate-200">
+                            <img class="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover ring-2 ring-[#080F63]/20 shrink-0" 
                                  src="{{ Auth::user()->avatar ?? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80' }}" 
                                  alt="{{ Auth::user()->name }}">
                             <div class="hidden sm:block text-left">
@@ -183,7 +200,7 @@
                             </div>
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="btn-navy text-xs py-2 px-5">Masuk</a>
+                        <a href="{{ route('login') }}" class="btn-navy text-xs py-2 px-4 sm:px-5">Masuk</a>
                     @endauth
                 </div>
             </header>

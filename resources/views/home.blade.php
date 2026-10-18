@@ -17,6 +17,22 @@
                             <p class="text-sm sm:text-base text-[#64748B] leading-relaxed max-w-lg">
                                 Pilih dari ribuan guru berpengalaman di berbagai mata pelajaran dan jenjang, tersedia untuk les Online maupun Tatap Muka.
                             </p>
+
+                            <!-- Compact Social Proof Badge on Mobile -->
+                            <div class="flex items-center gap-3 pt-1 lg:hidden">
+                                <div class="flex -space-x-2 shrink-0">
+                                    <img class="w-8 h-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Guru">
+                                    <img class="w-8 h-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Guru">
+                                    <img class="w-8 h-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="Guru">
+                                </div>
+                                <div class="text-left">
+                                    <div class="font-extrabold text-xs text-[#111827] flex items-center gap-1 leading-tight">
+                                        <span>4.9 / 5.0</span>
+                                        <span class="text-amber-500">★★★★★</span>
+                                    </div>
+                                    <span class="text-[10px] text-[#64748B]">Dipercaya 1.000+ Orang Tua Murid</span>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Pencarian Cepat Container -->
@@ -78,8 +94,8 @@
                         </div>
                     </div>
 
-                    <!-- Right Hero Teacher Photo with Floating Badges (5 cols) -->
-                    <div class="lg:col-span-5 relative flex justify-center items-center">
+                    <!-- Right Hero Teacher Photo with Floating Badges (Desktop Only, hidden on Mobile) -->
+                    <div class="hidden lg:flex lg:col-span-5 relative justify-center items-center">
                         <div class="relative w-full max-w-[340px] sm:max-w-[420px] h-[340px] sm:h-[460px] flex items-end justify-center">
                             <!-- Soft Sky Blue Backdrop Organic Curve (as seen in design) -->
                             <div class="absolute inset-x-3 sm:inset-x-4 top-3 sm:top-4 bottom-0 bg-gradient-to-b from-[#E0EDFF] via-[#EAF2FF] to-[#DBEAFE] rounded-[48px] sm:rounded-[64px] -z-10 shadow-xs"></div>
@@ -125,7 +141,7 @@
                 </div>
 
                 <!-- 4 Trust Stats Banner (Strip Card) -->
-                <div class="mt-8 sm:mt-12 bg-white rounded-2xl border border-[#E5E8F0] p-3 sm:p-5 shadow-xs">
+                <div class="mt-6 sm:mt-12 bg-white rounded-2xl border border-[#E5E8F0] p-3 sm:p-5 shadow-xs">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-0 divide-y-0 sm:divide-y sm:divide-y-0 md:divide-x divide-slate-100 text-center">
                         <div class="p-2 sm:p-3 rounded-xl sm:rounded-none bg-slate-50/60 sm:bg-transparent flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3">
                             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">

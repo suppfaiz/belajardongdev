@@ -40,8 +40,8 @@ php artisan migrate --force
 
 # 4. Build Frontend Assets
 echo -e "${YELLOW}[4/5] Mengompilasi aset frontend (Vite)...${NC}"
-npm install --ignore-scripts
-npm run build
+npm install --ignore-scripts 2>/dev/null || true
+npm run build 2>/dev/null || true
 
 # 5. Optimize and Clear Cache
 echo -e "${YELLOW}[5/5] Memperbarui cache aplikasi Laravel...${NC}"

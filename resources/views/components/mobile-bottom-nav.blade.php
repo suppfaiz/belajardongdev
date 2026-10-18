@@ -32,8 +32,11 @@
 
 @unless(request()->routeIs('teachers.show'))
 <!-- Sleek Native App-Style Mobile Bottom Navigation -->
-<nav class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-xl border-t border-slate-200/90 z-50 md:hidden shadow-[0_-4px_24px_rgba(8,15,99,0.07)] safe-pb transition-all" aria-label="Navigasi Bawah">
-    <div class="grid grid-cols-5 h-16 max-w-md mx-auto px-2">
+<nav class="fixed bottom-0 left-0 right-0 w-full inset-x-0 bg-white/95 backdrop-blur-xl border-t border-slate-200/90 z-50 md:hidden shadow-[0_-4px_24px_rgba(8,15,99,0.07)] safe-pb transition-all" 
+     style="position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 50;" 
+     aria-label="Navigasi Bawah">
+    <div class="grid grid-cols-5 h-16 w-full max-w-md mx-auto px-2"
+         style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); height: 64px; width: 100%;">
         <!-- 1. Home -->
         <a href="{{ route('home') }}" 
            class="flex flex-col items-center justify-center py-1 transition-all duration-200 relative group {{ $isHomeActive ? 'text-[#080F63]' : 'text-slate-400 hover:text-slate-600' }}">

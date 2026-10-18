@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pencairan Dana — Belajar Dong" headerTitle="Antrean Pencairan Dana (Payouts)" headerSubtitle="Verifikasi dan selesaikan pencairan saldo mengajar para guru ke rekening bank resmi">
+<x-layouts.dashboard title="Pencairan Dana — BelajarYuk" headerTitle="Antrean Pencairan Dana (Payouts)" headerSubtitle="Verifikasi dan selesaikan pencairan saldo mengajar para guru ke rekening bank resmi">
     <div class="space-y-5 pt-2">
         <div class="data-table-wrapper">
             <div class="overflow-x-auto">

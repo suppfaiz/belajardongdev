@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pemesanan Les Guru — Belajar Dong" headerTitle="Permintaan & Jadwal Les" headerSubtitle="Kelola permintaan les masuk dan pantau sesi les aktif Anda">
+<x-layouts.dashboard title="Pemesanan Les Guru — BelajarYuk" headerTitle="Permintaan & Jadwal Les" headerSubtitle="Kelola permintaan les masuk dan pantau sesi les aktif Anda">
     <div class="space-y-6 pt-2">
         <!-- Status Tabs -->
         <div class="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-lg text-xs font-medium overflow-x-auto border border-slate-200/60 max-w-full">

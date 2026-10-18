@@ -73,7 +73,7 @@ class AuthController extends Controller
                 $request->session()->regenerateToken();
 
                 return back()->withErrors([
-                    'email' => 'Akun Anda dinonaktifkan. Silakan hubungi admin Belajar Dong.',
+                    'email' => 'Akun Anda dinonaktifkan. Silakan hubungi admin BelajarYuk.',
                 ]);
             }
 
@@ -151,7 +151,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return $this->redirectBasedOnRole($user)
-            ->with('success', 'Akun Belajar Dong berhasil dibuat! Selamat bergabung.');
+            ->with('success', 'Akun BelajarYuk berhasil dibuat! Selamat bergabung.');
     }
 
     /**

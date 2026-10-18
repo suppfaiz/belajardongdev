@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Dashboard Admin — Belajar Dong" headerTitle="Dashboard Admin" headerSubtitle="Ringkasan aktivitas platform marketplace, verifikasi guru, dan monitoring transaksi les">
+<x-layouts.dashboard title="Dashboard Admin — BelajarYuk" headerTitle="Dashboard Admin" headerSubtitle="Ringkasan aktivitas platform marketplace, verifikasi guru, dan monitoring transaksi les">
     <div class="space-y-8 pt-4">
         <!-- Top Admin Banner (Mesh Gradient Luxury Look) -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-gradient-to-r from-[#0B0F19] via-slate-900 to-blue-950 rounded-2xl p-6 sm:p-8 text-white border border-slate-800 shadow-xl relative overflow-hidden">

@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pencairan Dana — Belajar Dong" headerTitle="Pencairan Dana (Payout)" headerSubtitle="Ajukan pencairan saldo mengajar langsung ke rekening bank Anda">
+<x-layouts.dashboard title="Pencairan Dana — BelajarYuk" headerTitle="Pencairan Dana (Payout)" headerSubtitle="Ajukan pencairan saldo mengajar langsung ke rekening bank Anda">
     <div class="space-y-6 pt-2">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <!-- Left: Request Payout Form -->

@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Progres Belajar — Belajar Dong">
+<x-layouts.dashboard title="Progres Belajar — BelajarYuk">
     <div class="space-y-6 max-w-7xl mx-auto">
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

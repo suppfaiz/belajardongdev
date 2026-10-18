@@ -1,4 +1,4 @@
-<x-layouts.app title="Daftar Akun Baru — Belajar Dong">
+<x-layouts.app title="Daftar Akun Baru — BelajarYuk">
     <div class="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{ 
         role: '{{ old('role', 'parent') }}',
         showPassword: false
@@ -14,7 +14,7 @@
                     <a href="{{ route('home') }}" class="inline-block transform hover:scale-105 transition">
                         <x-logo size="lg" />
                     </a>
-                    <h2 class="text-2xl font-extrabold text-[#111827] tracking-tight pt-2">Bergabung di Belajar Dong</h2>
+                    <h2 class="text-2xl font-extrabold text-[#111827] tracking-tight pt-2">Bergabung di BelajarYuk</h2>
                     <p class="text-xs text-[#64748B] font-normal">Pilih jenis akun yang sesuai dengan kebutuhan Anda untuk memulai.</p>
                 </div>
 
@@ -113,7 +113,7 @@
                 </form>
 
                 <div class="text-center text-xs text-slate-500 pt-3 border-t border-[#F0F0F0]">
-                    Sudah memiliki akun Belajar Dong?
+                    Sudah memiliki akun BelajarYuk?
                     <a href="{{ route('login') }}" class="font-bold text-[#080F63] hover:underline ml-1">Masuk di sini</a>
                 </div>
             </div>

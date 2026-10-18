@@ -72,7 +72,7 @@ class BelajarDongSeeder extends Seeder
             ['email' => 'admin@belajardong.id'],
             [
                 'uuid' => (string) Str::uuid(),
-                'name' => 'Admin Belajar Dong',
+                'name' => 'Admin BelajarYuk',
                 'phone' => '081199887766',
                 'role' => 'admin',
                 'password' => Hash::make('password'),

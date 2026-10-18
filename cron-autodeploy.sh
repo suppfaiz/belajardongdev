@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ==============================================================================
-# Belajar Dong - Auto-Pull & Auto-Deploy Cron Script
+# BelajarYuk - Auto-Pull & Auto-Deploy Cron Script
 # Usage: Run via cron every 1-2 minutes:
 #   * * * * * cd /var/www/belajardong && bash cron-autodeploy.sh
 # ==============================================================================

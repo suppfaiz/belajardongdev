@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Belajar Dong — Temukan Guru Les Terbaik untuk Masa Depan Anak Anda' }}</title>
+    <title>{{ $title ?? 'BelajarYuk — Temukan Guru Les Terbaik untuk Masa Depan Anak Anda' }}</title>
     <meta name="description" content="Pilih dari ribuan guru berpengalaman di berbagai mata pelajaran dan jenjang, tersedia untuk les Online maupun Tatap Muka.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="alternate icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +22,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-full flex flex-col bg-[#F3F5FA] text-[#171923] font-sans antialiased selection:bg-[#080F63] selection:text-white">
-    <!-- Navbar Belajar Dong with Smooth Animated Blue Underlines -->
+    <!-- Navbar BelajarYuk with Smooth Animated Blue Underlines -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E5E8F0] shadow-2xs transition-all" x-data="{ mobileMenuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-[72px]">
@@ -201,7 +206,7 @@
         {{ $slot }}
     </main>
 
-    <!-- Footer Belajar Dong -->
+    <!-- Footer BelajarYuk -->
     <footer class="bg-white border-t border-[#E5E8F0] py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -210,7 +215,7 @@
                     <p class="text-xs text-[#747B8C] leading-relaxed">
                         Platform marketplace les privat terpercaya yang menghubungkan orang tua dan murid dengan guru honorer serta sarjana berdedikasi tinggi.
                     </p>
-                    <p class="text-xs text-slate-400">© 2026 Belajar Dong. All rights reserved.</p>
+                    <p class="text-xs text-slate-400">© 2026 BelajarYuk. All rights reserved.</p>
                 </div>
 
                 <div>
@@ -235,7 +240,7 @@
                 <div>
                     <h4 class="text-xs font-bold text-[#171923] uppercase tracking-wider mb-3">Bantuan & Keamanan</h4>
                     <ul class="space-y-2 text-xs text-[#747B8C]">
-                        <li><a href="{{ route('about') }}" class="hover:text-[#080F63] transition">Tentang Belajar Dong</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-[#080F63] transition">Tentang BelajarYuk</a></li>
                         <li><a href="#" class="hover:text-[#080F63] transition">Garansi Rekening Bersama</a></li>
                         <li><a href="#" class="hover:text-[#080F63] transition">Kebijakan Privasi</a></li>
                         <li><a href="#" class="hover:text-[#080F63] transition">Syarat & Ketentuan</a></li>

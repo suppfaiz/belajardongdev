@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pengaduan & Keamanan — Belajar Dong" headerTitle="Pengaduan & Keamanan Les" headerSubtitle="Tangani laporan keselamatan, kendala pembayaran, dan sengketa sesi les offline">
+<x-layouts.dashboard title="Pengaduan & Keamanan — BelajarYuk" headerTitle="Pengaduan & Keamanan Les" headerSubtitle="Tangani laporan keselamatan, kendala pembayaran, dan sengketa sesi les offline">
     <div class="space-y-6 pt-4">
         <div class="data-table-wrapper">
             <div class="overflow-x-auto">

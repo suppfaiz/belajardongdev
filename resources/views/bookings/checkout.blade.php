@@ -1,4 +1,4 @@
-<x-layouts.app title="Pembayaran Les Tatap Muka — Belajar Dong">
+<x-layouts.app title="Pembayaran Les Tatap Muka — BelajarYuk">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8" x-data="{ selectedMethod: 'qris' }">
         <!-- Breadcrumb -->
         <nav class="flex text-xs font-semibold text-slate-400 gap-2 items-center">
@@ -130,7 +130,7 @@
                         <div class="w-7 h-7 rounded-xl bg-blue-500/20 flex items-center justify-center">
                             <x-icons.shield class="w-4 h-4 text-blue-400" />
                         </div>
-                        <span>Jaminan Keamanan Escrow Belajar Dong</span>
+                        <span>Jaminan Keamanan Escrow BelajarYuk</span>
                     </div>
                     <p class="text-xs text-slate-300 leading-relaxed">
                         Dana pembayaran Anda **tidak langsung diberikan ke guru**. Dana disimpan aman dalam rekening penampung resmi (escrow) platform dan baru diteruskan ke guru setelah Anda mengonfirmasi bahwa sesi les tatap muka telah terlaksana dengan baik di rumah Anda.
@@ -265,7 +265,7 @@
                                     <input type="radio" name="payment_method" value="bank_transfer" x-model="selectedMethod" class="mt-1 text-blue-600">
                                     <div>
                                         <p class="text-xs font-bold text-slate-900">Transfer Bank Manual</p>
-                                        <p class="text-[11px] text-slate-500 mt-0.5">Rekening Giro Resmi Belajar Dong Indonesia</p>
+                                        <p class="text-[11px] text-slate-500 mt-0.5">Rekening Giro Resmi BelajarYuk Indonesia</p>
                                     </div>
                                 </div>
                                 <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 font-bold text-[10px]">

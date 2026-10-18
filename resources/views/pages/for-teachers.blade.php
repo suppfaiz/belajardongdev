@@ -1,4 +1,4 @@
-<x-layouts.app title="Untuk Guru — Mengajar di Belajar Dong">
+<x-layouts.app title="Untuk Guru — Mengajar di BelajarYuk">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 bg-[#FAFAFA]">
         <div class="text-center space-y-4">
             <span class="text-xs font-bold uppercase tracking-widest text-[#080F63] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-200">Peluang Karir Pengajar</span>
@@ -51,7 +51,7 @@
                 <li>Memiliki komitmen tulus mendidik dan membimbing karakter siswa.</li>
                 <li>Memiliki KTP elektronik asli dan masih berlaku.</li>
                 <li>Memiliki Ijazah S1/D4/D3 atau Surat Keterangan Mahasiswa aktif dari perguruan tinggi terakreditasi.</li>
-                <li>Bersedia mematuhi kode etik dan standar keselamatan les offline Belajar Dong.</li>
+                <li>Bersedia mematuhi kode etik dan standar keselamatan les offline BelajarYuk.</li>
             </ol>
         </div>
     </div>

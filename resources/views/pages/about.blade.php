@@ -1,7 +1,7 @@
-<x-layouts.app title="Tentang Kami — Belajar Dong">
+<x-layouts.app title="Tentang Kami — BelajarYuk">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 bg-[#FAFAFA]">
         <div class="text-center space-y-4">
-            <span class="text-xs font-bold uppercase tracking-widest text-[#080F63] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-200">Mengenal Belajar Dong</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-[#080F63] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-200">Mengenal BelajarYuk</span>
             <h1 class="text-3xl sm:text-4xl font-extrabold text-[#171717] tracking-tight">Menjembatani Pendidikan Berkualitas di Rumah Anda</h1>
             <p class="text-base text-[#525252] max-w-2xl mx-auto leading-relaxed font-normal">
                 “Temukan Guru Terbaik, Raih Masa Depan Cerah.”
@@ -11,7 +11,7 @@
         <div class="bg-white rounded-3xl p-8 sm:p-10 border border-[#E5E5E5] shadow-xs space-y-6 text-sm text-[#525252] leading-relaxed">
             <h2 class="text-xl font-extrabold text-[#171717]">Misi Sosial & Pendidikan Kami</h2>
             <p>
-                <strong class="text-[#171717]">Belajar Dong</strong> lahir dari dedikasi untuk mendukung dua pilar utama pendidikan di Indonesia: jutaan guru honorer dan pengajar berdedikasi yang membutuhkan penghasilan layak, serta para orang tua yang membutuhkan guru les privat tatap muka terpercaya untuk mendampingi belajar anak di rumah.
+                <strong class="text-[#171717]">BelajarYuk</strong> lahir dari dedikasi untuk mendukung dua pilar utama pendidikan di Indonesia: jutaan guru honorer dan pengajar berdedikasi yang membutuhkan penghasilan layak, serta para orang tua yang membutuhkan guru les privat tatap muka terpercaya untuk mendampingi belajar anak di rumah.
             </p>
 
             <h3 class="text-base font-extrabold text-[#171717] pt-2 font-['Poppins']">Keunggulan Model Les Offline Tatap Muka</h3>

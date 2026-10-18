@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Detail Pemesanan {{ $booking->booking_code }} — Belajar Dong" headerTitle="Detail Pemesanan" headerSubtitle="Informasi lengkap jadwal les privat, status escrow, dan kredensial pengajar">
+<x-layouts.dashboard title="Detail Pemesanan {{ $booking->booking_code }} — BelajarYuk" headerTitle="Detail Pemesanan" headerSubtitle="Informasi lengkap jadwal les privat, status escrow, dan kredensial pengajar">
     <div class="space-y-6 max-w-7xl mx-auto" x-data="{ reviewRating: 5, showConfirmModal: false }">
         <!-- Top Breadcrumb & Action Bar -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <!-- 1. Garansi Rekening Escrow Belajar Dong (Hero Banner) -->
+        <!-- 1. Garansi Rekening Escrow BelajarYuk (Hero Banner) -->
         <div class="bg-gradient-to-br from-[#080F63] via-[#0D1880] to-[#1222A8] rounded-[24px] p-6 sm:p-8 text-white relative overflow-hidden shadow-soft-lg">
             <!-- Decorative Glow Elements -->
             <div class="absolute -right-12 -top-12 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -84,7 +84,7 @@
                     <div class="space-y-2">
                         <div class="flex flex-wrap items-center gap-2">
                             <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">
-                                Garansi Rekening Escrow Belajar Dong
+                                Garansi Rekening Escrow BelajarYuk
                             </h2>
                             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 text-[11px] font-bold">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
@@ -92,7 +92,7 @@
                             </span>
                         </div>
                         <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
-                            Dana pembayaran Anda diamankan di rekening penampungan resmi Belajar Dong. Saldo baru akan diteruskan ke guru setelah Anda mengonfirmasi bahwa sesi les privat tatap muka telah selesai dilaksanakan di rumah.
+                            Dana pembayaran Anda diamankan di rekening penampungan resmi BelajarYuk. Saldo baru akan diteruskan ke guru setelah Anda mengonfirmasi bahwa sesi les privat tatap muka telah selesai dilaksanakan di rumah.
                         </p>
                     </div>
                 </div>
@@ -236,7 +236,7 @@
                         <h4 class="text-sm font-extrabold text-amber-950">Guru Telah Menyetujui Jadwal Bimbingan Ini!</h4>
                     </div>
                     <p class="text-xs text-amber-800 leading-relaxed">
-                        Segera selesaikan pembayaran untuk mengunci jadwal les di kalender guru dan mengaktifkan proteksi rekening escrow Belajar Dong.
+                        Segera selesaikan pembayaran untuk mengunci jadwal les di kalender guru dan mengaktifkan proteksi rekening escrow BelajarYuk.
                     </p>
                 </div>
 
@@ -300,7 +300,7 @@
                 </div>
                 <div class="space-y-0.5">
                     <h4 class="text-sm font-extrabold text-emerald-950">Sesi Pembelajaran Telah Berhasil Selesai</h4>
-                    <p class="text-xs text-emerald-800">Honor les telah dicairkan ke saldo guru secara transparan melalui sistem ledger Belajar Dong.</p>
+                    <p class="text-xs text-emerald-800">Honor les telah dicairkan ke saldo guru secara transparan melalui sistem ledger BelajarYuk.</p>
                 </div>
             </div>
         @endif
@@ -369,7 +369,7 @@
                             <p class="text-xs text-[#747B8C]">{{ $booking->teacher->teacherProfile?->education ?? 'Pendidikan Guru Profesional' }}</p>
                             <p class="text-xs text-slate-700 font-medium pt-0.5 flex items-center gap-1.5">
                                 <x-icons.phone class="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                                <span>{{ $booking->teacher->phone ?? 'Kontak aman melalui koordinasi sistem Belajar Dong' }}</span>
+                                <span>{{ $booking->teacher->phone ?? 'Kontak aman melalui koordinasi sistem BelajarYuk' }}</span>
                             </p>
                         </div>
                     </div>

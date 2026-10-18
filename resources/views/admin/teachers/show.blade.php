@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Verifikasi Regulasi Guru: {{ $teacherProfile->user->name }} — Belajar Dong" headerTitle="Tinjau Kepatuhan & Legalitas Guru" headerSubtitle="Pemeriksaan berkas resmi identitas dan kualifikasi mengajar sesuai UU No. 14/2005 dan UU No. 35/2014">
+<x-layouts.dashboard title="Verifikasi Regulasi Guru: {{ $teacherProfile->user->name }} — BelajarYuk" headerTitle="Tinjau Kepatuhan & Legalitas Guru" headerSubtitle="Pemeriksaan berkas resmi identitas dan kualifikasi mengajar sesuai UU No. 14/2005 dan UU No. 35/2014">
     <div class="max-w-5xl space-y-6 pt-4">
         <a href="{{ route('admin.teachers') }}" class="text-xs text-blue-600 font-semibold hover:underline inline-flex items-center gap-1">
             ← Kembali ke Antrean Verifikasi Guru

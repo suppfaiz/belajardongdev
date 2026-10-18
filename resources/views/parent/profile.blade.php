@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pengaturan Akun — Belajar Dong">
+<x-layouts.dashboard title="Pengaturan Akun — BelajarYuk">
     <div class="max-w-4xl mx-auto space-y-6">
         <div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-[#171923] tracking-tight">

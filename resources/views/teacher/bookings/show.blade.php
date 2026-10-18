@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pemesanan {{ $booking->booking_code }} — Belajar Dong" headerTitle="Detail Jadwal Les" headerSubtitle="Informasi murid dan alamat tatap muka les privat">
+<x-layouts.dashboard title="Pemesanan {{ $booking->booking_code }} — BelajarYuk" headerTitle="Detail Jadwal Les" headerSubtitle="Informasi murid dan alamat tatap muka les privat">
     <div class="max-w-4xl space-y-6 pt-4">
         <a href="{{ route('teacher.bookings') }}" class="text-xs text-blue-600 font-semibold hover:underline inline-flex items-center gap-1">
             ← Kembali ke Daftar Pemesanan

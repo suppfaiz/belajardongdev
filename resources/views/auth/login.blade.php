@@ -1,13 +1,5 @@
-<x-layouts.app title="Masuk ke Akun — Belajar Dong">
-    <div class="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{
-        showPassword: false,
-        activeDemo: 'parent',
-        setDemo(role, email, pass) {
-            this.activeDemo = role;
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = pass;
-        }
-    }">
+<x-layouts.app title="Masuk ke Akun — BelajarYuk">
+    <div class="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F3F5FA] relative overflow-hidden" x-data="{ showPassword: false }">
         <!-- Ambient decorative blur in Deep Navy & Blue -->
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#080F63]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -21,55 +13,7 @@
                         <x-logo size="lg" />
                     </a>
                     <h2 class="text-2xl font-extrabold text-[#111827] tracking-tight pt-2">Masuk ke Akun Anda</h2>
-                    <p class="text-xs text-[#64748B] font-normal">Pilih profil akun dan lanjutkan bimbingan belajar terbaik.</p>
-                </div>
-
-                <!-- Interactive 1-Click Demo Account Quick Switcher -->
-                <div class="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-4 space-y-2.5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-[#080F63] animate-pulse"></span>
-                            Akses Cepat Demo:
-                        </span>
-                        <span class="text-[10px] text-[#080F63] font-bold bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
-                            1-Klik Isi Form
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-2">
-                        <!-- Orang Tua Demo -->
-                        <button 
-                            type="button" 
-                            @click="setDemo('parent', 'andi.pratama@belajardong.id', 'password')"
-                            :class="activeDemo === 'parent' ? 'bg-[#080F63] text-white shadow-md border-[#080F63]' : 'bg-white text-slate-700 border-[#E2E8F0] hover:bg-blue-50 hover:border-[#080F63]'"
-                            class="p-2.5 rounded-xl border text-center transition font-bold text-xs cursor-pointer"
-                        >
-                            <span class="block text-base">👨‍👩‍👧</span>
-                            <span class="block mt-0.5 text-[11px] leading-tight">Orang Tua</span>
-                        </button>
-
-                        <!-- Guru Demo -->
-                        <button 
-                            type="button" 
-                            @click="setDemo('teacher', 'siti.nurhaliza@belajardong.id', 'password')"
-                            :class="activeDemo === 'teacher' ? 'bg-[#080F63] text-white shadow-md border-[#080F63]' : 'bg-white text-slate-700 border-[#E2E8F0] hover:bg-blue-50 hover:border-[#080F63]'"
-                            class="p-2.5 rounded-xl border text-center transition font-bold text-xs cursor-pointer"
-                        >
-                            <span class="block text-base">👩‍🏫</span>
-                            <span class="block mt-0.5 text-[11px] leading-tight">Guru Les</span>
-                        </button>
-
-                        <!-- Admin Demo -->
-                        <button 
-                            type="button" 
-                            @click="setDemo('admin', 'admin@belajardong.id', 'password')"
-                            :class="activeDemo === 'admin' ? 'bg-[#080F63] text-white shadow-md border-[#080F63]' : 'bg-white text-slate-700 border-[#E2E8F0] hover:bg-blue-50 hover:border-[#080F63]'"
-                            class="p-2.5 rounded-xl border text-center transition font-bold text-xs cursor-pointer"
-                        >
-                            <span class="block text-base">🛡️</span>
-                            <span class="block mt-0.5 text-[11px] leading-tight">Admin</span>
-                        </button>
-                    </div>
+                    <p class="text-xs text-[#64748B] font-normal">Silakan masukkan email dan kata sandi untuk melanjutkan.</p>
                 </div>
 
                 @if(session('error'))
@@ -99,7 +43,7 @@
                                 type="email" 
                                 autocomplete="email" 
                                 required 
-                                value="{{ old('email', 'andi.pratama@belajardong.id') }}" 
+                                value="{{ old('email') }}" 
                                 placeholder="nama@email.com" 
                                 class="w-full bg-white border border-[#E2E8F0] rounded-xl text-xs font-medium text-slate-800 py-3 px-3.5 focus:outline-none focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63] @error('email') border-[#EF4444] bg-[#FEE2E2]/30 @enderror"
                             >
@@ -122,7 +66,7 @@
                                 :type="showPassword ? 'text' : 'password'" 
                                 autocomplete="current-password" 
                                 required 
-                                value="password" 
+                                value="" 
                                 placeholder="••••••••" 
                                 class="w-full bg-white border border-[#E2E8F0] rounded-xl text-xs font-medium text-slate-800 py-3 px-3.5 pr-10 focus:outline-none focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63] @error('password') border-[#EF4444] bg-[#FEE2E2]/30 @enderror"
                             >

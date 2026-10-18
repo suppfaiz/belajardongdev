@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Anak Saya — Belajar Dong">
+<x-layouts.dashboard title="Anak Saya — BelajarYuk">
     <div class="space-y-6 max-w-7xl mx-auto" x-data="{ addModal: false }">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>

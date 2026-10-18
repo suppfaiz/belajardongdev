@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Penghasilan & Ledger — Belajar Dong" headerTitle="Penghasilan & Buku Besar (Ledger)" headerSubtitle="Catatan mutasi keuangan transparan, komisi platform, dan rekonsiliasi saldo mengajar Anda">
+<x-layouts.dashboard title="Penghasilan & Ledger — BelajarYuk" headerTitle="Penghasilan & Buku Besar (Ledger)" headerSubtitle="Catatan mutasi keuangan transparan, komisi platform, dan rekonsiliasi saldo mengajar Anda">
     <div class="space-y-6 pt-2">
         <!-- 3 Financial Stat Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">

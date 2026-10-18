@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Audit Log — Belajar Dong" headerTitle="Audit Log Aktivitas Sistem" headerSubtitle="Rekam jejak seluruh tindakan administratif, perubahan komisi, dan persetujuan verifikasi">
+<x-layouts.dashboard title="Audit Log — BelajarYuk" headerTitle="Audit Log Aktivitas Sistem" headerSubtitle="Rekam jejak seluruh tindakan administratif, perubahan komisi, dan persetujuan verifikasi">
     <div class="space-y-6 pt-4">
         <div class="data-table-wrapper">
             <div class="overflow-x-auto">

@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Manajemen Pengguna — Belajar Dong" headerTitle="Manajemen Pengguna" headerSubtitle="Kelola seluruh akun pengguna, peran hak akses, dan status penangguhan akun">
+<x-layouts.dashboard title="Manajemen Pengguna — BelajarYuk" headerTitle="Manajemen Pengguna" headerSubtitle="Kelola seluruh akun pengguna, peran hak akses, dan status penangguhan akun">
     <div class="space-y-5 pt-2">
         <!-- Search and Filter Bar -->
         <div class="panel-window p-4">

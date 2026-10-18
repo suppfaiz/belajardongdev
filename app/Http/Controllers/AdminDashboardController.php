@@ -281,7 +281,7 @@ class AdminDashboardController extends Controller
         $payout->update([
             'status' => 'completed',
             'processed_at' => now(),
-            'admin_notes' => $request->input('admin_notes', 'Ditransfer oleh Admin Belajar Dong'),
+            'admin_notes' => $request->input('admin_notes', 'Ditransfer oleh Admin BelajarYuk'),
         ]);
 
         // Record debit in ledger

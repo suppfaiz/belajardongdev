@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Mata Pelajaran & Jenjang — Belajar Dong" headerTitle="Mata Pelajaran yang Diajarkan" headerSubtitle="Pilih mata pelajaran, tingkat jenjang, dan sesuaikan tarif les Anda">
+<x-layouts.dashboard title="Mata Pelajaran & Jenjang — BelajarYuk" headerTitle="Mata Pelajaran yang Diajarkan" headerSubtitle="Pilih mata pelajaran, tingkat jenjang, dan sesuaikan tarif les Anda">
     <div class="max-w-4xl space-y-6 pt-4">
 
         @if($errors->any())

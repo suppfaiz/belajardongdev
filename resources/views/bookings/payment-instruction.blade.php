@@ -1,4 +1,4 @@
-<x-layouts.app title="Instruksi Pembayaran — Belajar Dong">
+<x-layouts.app title="Instruksi Pembayaran — BelajarYuk">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6" x-data="{
         copied: false,
         activeGuide: 'm-banking',
@@ -73,7 +73,7 @@
                     <!-- Realistic QR Frame -->
                     <div class="relative w-64 h-64 mx-auto p-4 bg-white border-2 border-slate-300 rounded-3xl shadow-sm flex flex-col items-center justify-center space-y-2">
                         @if($payment->qr_url)
-                            <img src="{{ $payment->qr_url }}" alt="QRIS Belajar Dong" class="w-full h-full object-contain">
+                            <img src="{{ $payment->qr_url }}" alt="QRIS BelajarYuk" class="w-full h-full object-contain">
                         @else
                             <!-- Styled SVG QR Code demonstration if dynamic URL -->
                             <div class="w-full h-full bg-slate-900 rounded-2xl flex flex-col items-center justify-center text-white p-4 space-y-2">
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="space-y-1">
-                        <p class="text-xs font-bold text-slate-800">Merchant: BELAJAR DONG OFFICIAL (ESCROW PT)</p>
+                        <p class="text-xs font-bold text-slate-800">Merchant: BELAJARYUK OFFICIAL (ESCROW PT)</p>
                         <p class="text-[11px] text-slate-500">NMID: ID1020261013009 • Berlaku untuk seluruh M-Banking & E-Wallet</p>
                     </div>
 
@@ -149,14 +149,14 @@
                         <p>1. Buka aplikasi Mobile Banking (Livin' Mandiri, BCA Mobile, BRImo, atau BNI Mobile).</p>
                         <p>2. Pilih menu <strong>Bayar / Transfer</strong> &gt; <strong>Virtual Account / QRIS</strong>.</p>
                         <p>3. Masukkan nomor Virtual Account atau scan QR Code di atas.</p>
-                        <p>4. Konfirmasi nama merchant <strong>BELAJAR DONG</strong> dan nominal pembayaran.</p>
+                        <p>4. Konfirmasi nama merchant <strong>BELAJARYUK</strong> dan nominal pembayaran.</p>
                         <p>5. Masukkan PIN Anda. Notifikasi konfirmasi akan terbit dalam hitungan detik.</p>
                     </div>
 
                     <div x-show="activeGuide === 'atm'" class="space-y-1.5">
                         <p>1. Masukkan kartu ATM dan PIN Anda di mesin ATM terdekat.</p>
                         <p>2. Pilih menu <strong>Transaksi Lainnya</strong> &gt; <strong>Pembayaran</strong> &gt; <strong>Lainnya</strong> &gt; <strong>Virtual Account</strong>.</p>
-                        <p>3. Ketikkan nomor Virtual Account Belajar Dong.</p>
+                        <p>3. Ketikkan nomor Virtual Account BelajarYuk.</p>
                         <p>4. Periksa kecocokan data pesanan di layar ATM dan selesaikan transaksi.</p>
                     </div>
 

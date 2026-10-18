@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Jadwal Mengajar — Belajar Dong" headerTitle="Jadwal Mengajar Mingguan" headerSubtitle="Atur slot ketersediaan waktu rutin Anda untuk menerima pesanan les privat tatap muka">
+<x-layouts.dashboard title="Jadwal Mengajar — BelajarYuk" headerTitle="Jadwal Mengajar Mingguan" headerSubtitle="Atur slot ketersediaan waktu rutin Anda untuk menerima pesanan les privat tatap muka">
     <div class="space-y-8 pt-4">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 

@@ -135,7 +135,7 @@ if [ ! -f .env ]; then
 fi
 
 # Update APP_URL & APP_NAME
-sed -i "s|^APP_NAME=.*|APP_NAME=\"Belajar Dong\"|g" .env
+sed -i "s|^APP_NAME=.*|APP_NAME=\"BelajarYuk\"|g" .env
 sed -i "s|^APP_ENV=.*|APP_ENV=production|g" .env
 sed -i "s|^APP_DEBUG=.*|APP_DEBUG=false|g" .env
 sed -i "s|^APP_URL=.*|APP_URL=http://${DOMAIN_OR_IP}|g" .env

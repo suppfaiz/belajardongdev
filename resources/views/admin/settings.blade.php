@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pengaturan Platform — Belajar Dong" headerTitle="Pengaturan Platform" headerSubtitle="Atur persentase komisi platform, batas penarikan, dan kebijakan sistem">
+<x-layouts.dashboard title="Pengaturan Platform — BelajarYuk" headerTitle="Pengaturan Platform" headerSubtitle="Atur persentase komisi platform, batas penarikan, dan kebijakan sistem">
     <div class="max-w-2xl space-y-6 pt-4">
 
         @if($errors->any())

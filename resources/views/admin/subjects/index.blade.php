@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Mata Pelajaran — Belajar Dong" headerTitle="Mata Pelajaran & Jenjang" headerSubtitle="Kelola kurikulum, kategori jenjang, dan mata pelajaran bimbingan belajar">
+<x-layouts.dashboard title="Mata Pelajaran — BelajarYuk" headerTitle="Mata Pelajaran & Jenjang" headerSubtitle="Kelola kurikulum, kategori jenjang, dan mata pelajaran bimbingan belajar">
     <div class="space-y-8 pt-4">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 

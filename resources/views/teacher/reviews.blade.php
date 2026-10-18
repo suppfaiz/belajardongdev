@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Ulasan Murid — Belajar Dong" headerTitle="Ulasan & Rating Murid" headerSubtitle="Daftar umpan balik dan penilaian yang diberikan orang tua murid atas sesi les Anda">
+<x-layouts.dashboard title="Ulasan Murid — BelajarYuk" headerTitle="Ulasan & Rating Murid" headerSubtitle="Daftar umpan balik dan penilaian yang diberikan orang tua murid atas sesi les Anda">
     <div class="space-y-6 pt-4">
 
         {{-- Rating Overview Card --}}

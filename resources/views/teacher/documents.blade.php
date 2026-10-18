@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Milestone Verifikasi Guru — Belajar Dong" headerTitle="Tahapan Milestone Verifikasi Guru" headerSubtitle="Standar legalitas lengkap sesuai UU No. 14/2005 (Guru & Dosen), UU No. 35/2014 (Perlindungan Anak), dan UU PDP No. 27/2022">
+<x-layouts.dashboard title="Milestone Verifikasi Guru — BelajarYuk" headerTitle="Tahapan Milestone Verifikasi Guru" headerSubtitle="Standar legalitas lengkap sesuai UU No. 14/2005 (Guru & Dosen), UU No. 35/2014 (Perlindungan Anak), dan UU PDP No. 27/2022">
     <div class="space-y-8 pt-4" x-data="{ currentMilestone: {{ $activeMilestone ?? 1 }} }">
 
         <!-- Top Overview & Verification Banner -->
@@ -14,7 +14,7 @@
                             <span class="badge-verified text-[11px] py-0.5 px-3">Lolos 100% Uji Regulasi</span>
                         </div>
                         <p class="text-xs text-emerald-700 mt-1 max-w-2xl leading-relaxed">
-                            Seluruh milestone identitas kependudukan, ijazah akademik S1, SKCK kepolisian, dan pakta integritas perlindungan anak Anda telah divalidasi sah oleh tim verifikator Belajar Dong.
+                            Seluruh milestone identitas kependudukan, ijazah akademik S1, SKCK kepolisian, dan pakta integritas perlindungan anak Anda telah divalidasi sah oleh tim verifikator BelajarYuk.
                         </p>
                     </div>
                 </div>
@@ -532,7 +532,7 @@
                                 <span class="px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 font-bold text-xs">Milestone 5</span>
                                 <h3 class="text-base font-extrabold text-slate-900">Status Peninjauan Dokumen &amp; Penerbitan Akun</h3>
                             </div>
-                            <p class="text-xs text-slate-500 mt-0.5">Peninjauan langsung oleh tim verifikator Belajar Dong</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Peninjauan langsung oleh tim verifikator BelajarYuk</p>
                         </div>
                     </div>
 

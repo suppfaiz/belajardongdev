@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Transaksi & Pembayaran — Belajar Dong" headerTitle="Transaksi & Pembayaran Escrow" headerSubtitle="Daftar pembayaran dari orang tua melalui gateway dan status rekening escrow">
+<x-layouts.dashboard title="Transaksi & Pembayaran — BelajarYuk" headerTitle="Transaksi & Pembayaran Escrow" headerSubtitle="Daftar pembayaran dari orang tua melalui gateway dan status rekening escrow">
     <div class="space-y-5 pt-2">
         <div class="data-table-wrapper">
             <div class="overflow-x-auto">

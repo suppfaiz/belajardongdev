@@ -34,6 +34,6 @@
         </svg>
     </div>
     <span class="{{ $textSize }} font-extrabold tracking-tight {{ $white ? 'text-white' : 'text-[#111827]' }}">
-        belajar dong
+        Belajar<span class="{{ $white ? 'text-blue-200' : 'text-[#2563EB]' }}">Yuk</span>
     </span>
 </div>

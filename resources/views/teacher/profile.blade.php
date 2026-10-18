@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Profil Saya — Belajar Dong" headerTitle="Profil Guru & Layanan" headerSubtitle="Atur biodata, kualifikasi, tarif les, area jangkauan radius, dan rekening pencairan">
+<x-layouts.dashboard title="Profil Saya — BelajarYuk" headerTitle="Profil Guru & Layanan" headerSubtitle="Atur biodata, kualifikasi, tarif les, area jangkauan radius, dan rekening pencairan">
     <div class="max-w-4xl space-y-6 pt-4">
 
         @if($errors->any())

@@ -5,7 +5,7 @@
     $showTeacherRoute = fn($t) => $isDashboard && Route::has('parent.teachers.show') ? route('parent.teachers.show', $t) : route('teachers.show', $t);
 @endphp
 
-<x-dynamic-component :component="$layoutComponent" title="Cari & Temukan Guru Les Terbaik — Belajar Dong">
+<x-dynamic-component :component="$layoutComponent" title="Cari & Temukan Guru Les Terbaik — BelajarYuk">
     <div class="{{ $isDashboard ? 'space-y-6 max-w-7xl mx-auto' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8' }}">
         <!-- Header Page Title & Subtitle -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

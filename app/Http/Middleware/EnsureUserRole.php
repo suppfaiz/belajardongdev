@@ -32,7 +32,7 @@ class EnsureUserRole
             $request->session()->regenerateToken();
 
             return redirect()->route('login')
-                ->with('error', 'Akun Anda sedang ditangguhkan. Silakan hubungi dukungan Belajar Dong.');
+                ->with('error', 'Akun Anda sedang ditangguhkan. Silakan hubungi dukungan BelajarYuk.');
         }
 
         return $next($request);

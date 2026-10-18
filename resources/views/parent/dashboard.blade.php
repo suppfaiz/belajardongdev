@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Dashboard — Belajar Dong">
+<x-layouts.dashboard title="Dashboard — BelajarYuk">
     <div class="space-y-6 max-w-7xl mx-auto">
         <!-- 1. Sapaan Header & Hero Banner Section -->
         <div>
@@ -67,7 +67,7 @@
                 <!-- Teacher illustration / photo mockup -->
                 <div class="hidden sm:block absolute right-6 bottom-0 w-64 lg:w-72 pointer-events-none z-10">
                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" 
-                         alt="Guru Belajar Dong" 
+                         alt="Guru BelajarYuk" 
                          class="w-full h-auto object-cover object-top mask-gradient drop-shadow-2xl">
                 </div>
             </div>

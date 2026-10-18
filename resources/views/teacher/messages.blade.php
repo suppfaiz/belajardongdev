@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pesan & Diskusi Orang Tua — Portal Guru Belajar Dong">
+<x-layouts.dashboard title="Pesan & Diskusi Orang Tua — Portal Guru BelajarYuk">
     <div class="max-w-7xl mx-auto space-y-6" x-data="{
         activeContactId: {{ $activeContact?->id ?? 'null' }},
         activeContactName: '{{ addslashes($activeContact?->name ?? 'Pilih Orang Tua') }}',

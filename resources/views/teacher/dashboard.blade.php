@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Dashboard Guru — Belajar Dong" headerTitle="Dashboard Guru" headerSubtitle="Semangat mengajar dan raih masa depan cerah anak bangsa">
+<x-layouts.dashboard title="Dashboard Guru — BelajarYuk" headerTitle="Dashboard Guru" headerSubtitle="Semangat mengajar dan raih masa depan cerah anak bangsa">
     <div class="space-y-6 max-w-7xl mx-auto pt-2">
         <!-- 1. Top Greeting Banner (Mesh Deep Navy Luxury Look) -->
         <div class="bg-gradient-to-br from-[#080F63] via-[#0D1880] to-[#1222A8] rounded-[24px] p-6 sm:p-8 text-white relative overflow-hidden shadow-soft-lg">

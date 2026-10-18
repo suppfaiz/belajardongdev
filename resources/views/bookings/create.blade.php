@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Pilih Jadwal & Paket Pemesanan — Belajar Dong">
+<x-layouts.dashboard title="Pilih Jadwal & Paket Pemesanan — BelajarYuk">
     <div class="max-w-4xl mx-auto space-y-6" x-data="{
         step: 2,
         planType: 'daily',
@@ -446,7 +446,7 @@
                             <span>- <span x-text="formatRupiah(discountAmount())"></span></span>
                         </div>
                         <div class="flex justify-between">
-                            <span>Garansi Rekening Escrow Belajar Dong:</span>
+                            <span>Garansi Rekening Escrow BelajarYuk:</span>
                             <span class="text-emerald-300 font-semibold">Gratis (Perlindungan 100%)</span>
                         </div>
 

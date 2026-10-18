@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ==============================================================================
-# Belajar Dong - Quick Deployment / Update Script for VPS
+# BelajarYuk - Quick Deployment / Update Script for VPS
 # Usage: cd /var/www/belajardong && bash deploy.sh
 # ==============================================================================
 
@@ -14,7 +14,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}============================================================${NC}"
-echo -e "${BLUE}       BELAJAR DONG - DEPLOYMENT / UPDATE SCRIPT            ${NC}"
+echo -e "${BLUE}         BELAJARYUK - DEPLOYMENT / UPDATE SCRIPT            ${NC}"
 echo -e "${BLUE}============================================================${NC}"
 
 # Ensure standard PATH for composer, npm, git, php
@@ -77,5 +77,5 @@ php artisan up
 
 echo ""
 echo -e "${GREEN}============================================================${NC}"
-echo -e "${GREEN}  UPDATE BELAJAR DONG BERHASIL DITERAPKAN DI VPS!           ${NC}"
+echo -e "${GREEN}    UPDATE BELAJARYUK BERHASIL DITERAPKAN DI VPS!           ${NC}"
 echo -e "${GREEN}============================================================${NC}"

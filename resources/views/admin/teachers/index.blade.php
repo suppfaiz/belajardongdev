@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Verifikasi Guru — Belajar Dong" headerTitle="Verifikasi Dokumen Guru" headerSubtitle="Validasi berkas identitas KTP dan ijazah guru honorer sebelum ditampilkan ke publik">
+<x-layouts.dashboard title="Verifikasi Guru — BelajarYuk" headerTitle="Verifikasi Dokumen Guru" headerSubtitle="Validasi berkas identitas KTP dan ijazah guru honorer sebelum ditampilkan ke publik">
     <div class="space-y-5 pt-2">
         <!-- Status Tabs -->
         <div class="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-lg text-xs font-medium overflow-x-auto border border-slate-200/60 max-w-full">

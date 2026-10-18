@@ -4,7 +4,7 @@
     $backUrl = $isDashboard && Route::has('parent.teachers.search') ? route('parent.teachers.search') : route('teachers.search');
 @endphp
 
-<x-dynamic-component :component="$layoutComponent" title="{{ $teacherProfile->user->name }} — Profil Guru Belajar Dong">
+<x-dynamic-component :component="$layoutComponent" title="{{ $teacherProfile->user->name }} — Profil Guru BelajarYuk">
     <div class="{{ $isDashboard ? 'space-y-6 max-w-7xl mx-auto' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6' }}" x-data="{ activeTab: 'tentang' }">
         <!-- Back Navigation Button -->
         <div>

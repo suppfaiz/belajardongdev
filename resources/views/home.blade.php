@@ -1,4 +1,4 @@
-<x-layouts.app title="Belajar Dong — Temukan Guru Terbaik untuk Masa Depan Anak Anda">
+<x-layouts.app title="BelajarYuk — Temukan Guru Terbaik untuk Masa Depan Anak Anda">
     <div class="space-y-16 lg:space-y-20 pb-16">
         <!-- ==========================================================================
              PANEL 1: HERO SECTION & QUICK SEARCH & STAT STRIP
@@ -87,7 +87,7 @@
                             <!-- Teacher Photo Cutout / Standing Portrait -->
                             <div class="relative z-10 w-full h-[390px] sm:h-[430px] flex items-end justify-center overflow-hidden rounded-b-[64px]">
                                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
-                                     alt="Guru Belajar Dong" 
+                                     alt="Guru BelajarYuk" 
                                      class="w-full h-full object-cover object-top filter contrast-[1.03]">
                             </div>
 
@@ -439,12 +439,12 @@
         </section>
 
         <!-- ==========================================================================
-             PANEL 4: KENAPA BELAJAR DONG? & CALL TO ACTION BANNER
+             PANEL 4: KENAPA BELAJARYUK? & CALL TO ACTION BANNER
              ========================================================================== -->
         <section id="keunggulan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="text-center max-w-xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight">
-                    Kenapa Belajar Dong?
+                    Kenapa BelajarYuk?
                 </h2>
                 <p class="text-xs sm:text-sm text-[#64748B] mt-1">
                     Solusi bimbingan belajar privat terlengkap yang dirancang untuk kenyamanan keluarga
@@ -463,7 +463,7 @@
                                 <span class="w-2 h-2 rounded-full bg-red-400"></span>
                                 <span class="w-2 h-2 rounded-full bg-amber-400"></span>
                                 <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                <span class="text-[9px] text-slate-300 ml-2 font-mono">belajardong.id/parent/dashboard</span>
+                                <span class="text-[9px] text-slate-300 ml-2 font-mono">belajaryuk.id/parent/dashboard</span>
                             </div>
                             
                             <!-- Internal Dashboard Grid Preview -->
@@ -514,7 +514,7 @@
                             <div class="h-1.5 w-10 bg-slate-800 rounded-full mx-auto mb-2"></div>
                             <div class="space-y-1.5 text-[9px]">
                                 <div class="p-1.5 rounded-lg bg-blue-50 text-[#080F63] font-bold flex items-center justify-between">
-                                    <span>Belajar Dong App</span>
+                                    <span>BelajarYuk App</span>
                                     <span class="text-[7px]">⚡</span>
                                 </div>
                                 <div class="p-1.5 rounded-lg bg-slate-50 border border-slate-100">

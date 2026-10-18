@@ -1,4 +1,4 @@
-<x-layouts.app title="Sesi Berakhir (419) — Belajar Dong">
+<x-layouts.app title="Sesi Berakhir (419) — BelajarYuk">
     <div class="min-h-[75vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full text-center space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 card-shadow">
             <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600">

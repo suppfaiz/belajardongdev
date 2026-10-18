@@ -366,7 +366,7 @@ class TeacherDashboardController extends Controller
         ]);
 
         return redirect()->route('teacher.documents', ['milestone' => 5])
-            ->with('success', 'Seluruh Milestone Verifikasi Berhasil Diajukan! Tim Verifikator Belajar Dong akan meninjau berkas Anda dalam 1x24 jam.');
+            ->with('success', 'Seluruh Milestone Verifikasi Berhasil Diajukan! Tim Verifikator BelajarYuk akan meninjau berkas Anda dalam 1x24 jam.');
     }
 
     /**
@@ -400,7 +400,7 @@ class TeacherDashboardController extends Controller
             $profile->update(['verification_status' => 'pending']);
         }
 
-        return back()->with('success', 'Dokumen berhasil diunggah secara aman. Tim admin Belajar Dong akan segera memverifikasinya.');
+        return back()->with('success', 'Dokumen berhasil diunggah secara aman. Tim admin BelajarYuk akan segera memverifikasinya.');
     }
 
     /**

@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Monitoring Booking — Belajar Dong" headerTitle="Monitoring Booking Marketplace" headerSubtitle="Pantau seluruh pemesanan les tatap muka di seluruh Indonesia">
+<x-layouts.dashboard title="Monitoring Booking — BelajarYuk" headerTitle="Monitoring Booking Marketplace" headerSubtitle="Pantau seluruh pemesanan les tatap muka di seluruh Indonesia">
     <div class="space-y-5 pt-2">
         <!-- Status Tabs -->
         <div class="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-lg text-xs font-medium overflow-x-auto border border-slate-200/60 max-w-full">

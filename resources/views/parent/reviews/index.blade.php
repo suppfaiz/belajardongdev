@@ -1,4 +1,4 @@
-<x-layouts.dashboard title="Ulasan Saya — Belajar Dong" headerTitle="Ulasan & Penilaian Saya" headerSubtitle="Daftar review yang telah Anda berikan kepada para guru les">
+<x-layouts.dashboard title="Ulasan Saya — BelajarYuk" headerTitle="Ulasan & Penilaian Saya" headerSubtitle="Daftar review yang telah Anda berikan kepada para guru les">
     <div class="space-y-6 pt-4">
 
         <div class="space-y-3">

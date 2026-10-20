@@ -1,28 +1,28 @@
 <x-layouts.dashboard title="Dashboard Guru — BelajarYuk" headerTitle="Dashboard Guru" headerSubtitle="Semangat mengajar dan raih masa depan cerah anak bangsa">
-    <div class="space-y-6 max-w-7xl mx-auto pt-2">
-        <!-- 1. Top Greeting Banner (Mesh Deep Navy Luxury Look) -->
-        <div class="bg-gradient-to-br from-[#080F63] via-[#0D1880] to-[#1222A8] rounded-[24px] p-6 sm:p-8 text-white relative overflow-hidden shadow-soft-lg">
+    <div class="space-y-6 max-w-7xl mx-auto pt-1 sm:pt-2">
+        <!-- 1. Top Greeting Banner (Modern Deep Navy Mesh Look) -->
+        <div class="bg-gradient-to-br from-[#050A4F] via-[#080F63] to-[#1222A8] rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 text-white relative overflow-hidden shadow-soft-lg">
             <!-- Decorative Glow Elements -->
             <div class="absolute -right-12 -top-12 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute right-1/4 -bottom-16 w-52 h-52 bg-blue-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
-            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div class="space-y-2 max-w-2xl">
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
+                <div class="space-y-2.5 max-w-2xl">
                     <div class="flex flex-wrap items-center gap-2">
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-semibold text-blue-100 border border-white/20">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                             Portal Resmi Guru Privat
                         </span>
 
                         @if($profile->is_verified)
                             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 text-[11px] font-bold">
                                 <x-icons.check class="w-3.5 h-3.5 text-emerald-300" />
-                                Terverifikasi Resmi (UU 14/2005)
+                                Terverifikasi Resmi (UU No. 14/2005)
                             </span>
                         @else
                             <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-200 border border-amber-400/30 text-[11px] font-bold">
                                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                Verifikasi Berkas Diperlukan
+                                Verifikasi: {{ $profile->getMilestoneProgressPercent() }}% Selesai
                             </span>
                         @endif
                     </div>
@@ -33,70 +33,147 @@
                     <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
                         {{ $profile->headline ?? 'Semangat mengajar dan membimbing siswa meraih prestasi terbaiknya hari ini.' }}
                     </p>
+
+                    <!-- Quick Summary Chips -->
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap pt-1 text-xs">
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                            <span class="text-amber-300 font-bold">★ {{ number_format($profile->rating_cache ?? 5.0, 1) }}</span>
+                            <span class="text-blue-200">({{ $profile->reviews_count_cache ?? 0 }} ulasan murid)</span>
+                        </div>
+                        <div class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-200">
+                            <span>🎓 {{ $completedLessonsCount ?? 0 }} Sesi Selesai</span>
+                        </div>
+                        @if($profile->service_city)
+                            <div class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-200">
+                                <span>📍 {{ $profile->service_city }}</span>
+                            </div>
+                        @endif
+                    </div>
                 </div>
 
-                <!-- Right Action Buttons & Quick Rating -->
-                <div class="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-3 shrink-0">
-                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs">
-                        <span class="text-amber-300 font-bold">★ {{ number_format($profile->rating_cache ?? 5.0, 1) }}</span>
-                        <span class="text-blue-200">({{ $profile->reviews_count_cache ?? 0 }} ulasan murid)</span>
-                    </div>
+                <!-- Right Action Buttons -->
+                <div class="flex flex-row sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-2.5 sm:gap-3 shrink-0 pt-2 lg:pt-0">
+                    <a href="{{ route('teacher.payouts') }}" class="btn-white-pill text-xs font-bold py-2.5 px-4 shadow-sm hover:shadow-md transition inline-flex items-center justify-center gap-1.5 flex-1 sm:flex-initial">
+                        <x-icons.wallet class="w-4 h-4 text-[#080F63]" />
+                        <span>Tarik Saldo</span>
+                        <span>&rarr;</span>
+                    </a>
 
-                    <div class="flex items-center gap-2.5">
-                        <a href="{{ route('teacher.payouts') }}" class="btn-white-pill text-xs font-bold py-2.5 px-4 shadow-sm hover:shadow-md transition inline-flex items-center gap-1.5">
-                            <x-icons.wallet class="w-4 h-4 text-[#080F63]" />
-                            <span>Tarik Saldo</span>
-                            <span>&rarr;</span>
-                        </a>
-
-                        <a href="{{ route('teachers.show', $profile->id) }}" target="_blank" class="px-3.5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs font-semibold backdrop-blur-xs transition border border-white/20">
-                            Lihat Profil Publik
-                        </a>
-                    </div>
+                    <a href="{{ route('teachers.show', $profile->id) }}" target="_blank" class="px-4 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs font-semibold backdrop-blur-xs transition border border-white/20 inline-flex items-center justify-center gap-1.5 flex-1 sm:flex-initial">
+                        <span>Lihat Profil Publik</span>
+                        <svg class="w-3.5 h-3.5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- 2. Verification Alert (if not verified) -->
+        <!-- 2. Interactive Milestone Verification Tracker (Visible when not verified) -->
         @if(! $profile->is_verified)
-            <div class="p-5 sm:p-6 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-xs">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs">
-                        <x-icons.shield class="w-6 h-6 text-white" />
-                    </div>
-                    <div class="space-y-1">
-                        <div class="flex items-center gap-2">
-                            <h3 class="text-sm font-extrabold text-amber-950">Profil Guru Belum Terverifikasi Lengkap</h3>
-                            <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">Uji Regulasi</span>
+            @php
+                $progressPercent = $profile->getMilestoneProgressPercent();
+                $m1 = $profile->isMilestone1Complete();
+                $m2 = $profile->isMilestone2Complete();
+                $m3 = $profile->isMilestone3Complete();
+                $m4 = $profile->isMilestone4Complete();
+            @endphp
+            <div class="bd-card p-5 sm:p-6 space-y-4 border-amber-200/80 bg-gradient-to-r from-amber-50/70 via-white to-amber-50/40">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                            <x-icons.shield class="w-5 h-5 text-white" />
                         </div>
-                        <p class="text-xs text-amber-800 leading-relaxed max-w-2xl">
-                            Lengkapi verifikasi KTP WNI, Ijazah S1 PDDikti, SKCK Kepolisian, dan Pakta Ramah Anak agar profil Anda muncul di halaman pencarian orang tua murid.
-                        </p>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm font-extrabold text-slate-900">Progres Verifikasi Kredensial Guru</h3>
+                                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[10px] font-bold">
+                                    {{ $progressPercent }}% Selesai
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-600">
+                                Selesaikan 4 tahapan verifikasi agar profil Anda aktif dan direkomendasikan kepada ribuan orang tua murid.
+                            </p>
+                        </div>
                     </div>
+
+                    <a href="{{ route('teacher.documents') }}" class="btn-navy bg-[#080F63] hover:bg-[#050A4F] text-xs font-bold py-2.5 px-4 shadow-xs shrink-0 inline-flex items-center justify-center gap-1.5 self-start sm:self-auto">
+                        <span>Lengkapi Berkas</span>
+                        <span>&rarr;</span>
+                    </a>
                 </div>
 
-                <a href="{{ route('teacher.documents') }}" class="btn-navy bg-amber-600 hover:bg-amber-700 py-2.5 px-5 text-xs font-bold shadow-sm shrink-0 flex items-center gap-2 self-start md:self-auto">
-                    <span>Lengkapi Milestone Verifikasi</span>
-                    <span>&rarr;</span>
-                </a>
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-200/80 h-2 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-amber-500 to-[#080F63] h-full rounded-full transition-all duration-500" style="width: {{ max(10, $progressPercent) }}%"></div>
+                </div>
+
+                <!-- 4 Milestone Step Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+                    <!-- Step 1: KTP WNI -->
+                    <div class="p-2.5 rounded-xl border {{ $m1 ? 'bg-emerald-50/80 border-emerald-200 text-emerald-900' : 'bg-white border-slate-200 text-slate-600' }} flex items-center gap-2">
+                        <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[10px] font-bold {{ $m1 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700' }}">
+                            @if($m1) ✓ @else 1 @endif
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-xs font-bold truncate">1. KTP WNI</p>
+                            <p class="text-[10px] {{ $m1 ? 'text-emerald-700' : 'text-slate-400' }}">{{ $m1 ? 'Terverifikasi' : 'Belum diunggah' }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Ijazah S1 -->
+                    <div class="p-2.5 rounded-xl border {{ $m2 ? 'bg-emerald-50/80 border-emerald-200 text-emerald-900' : 'bg-white border-slate-200 text-slate-600' }} flex items-center gap-2">
+                        <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[10px] font-bold {{ $m2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700' }}">
+                            @if($m2) ✓ @else 2 @endif
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-xs font-bold truncate">2. Ijazah S1</p>
+                            <p class="text-[10px] {{ $m2 ? 'text-emerald-700' : 'text-slate-400' }}">{{ $m2 ? 'Terverifikasi' : 'Belum diunggah' }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: SKCK -->
+                    <div class="p-2.5 rounded-xl border {{ $m3 ? 'bg-emerald-50/80 border-emerald-200 text-emerald-900' : 'bg-white border-slate-200 text-slate-600' }} flex items-center gap-2">
+                        <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[10px] font-bold {{ $m3 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700' }}">
+                            @if($m3) ✓ @else 3 @endif
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-xs font-bold truncate">3. SKCK Polisi</p>
+                            <p class="text-[10px] {{ $m3 ? 'text-emerald-700' : 'text-slate-400' }}">{{ $m3 ? 'Terverifikasi' : 'Belum diunggah' }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Pakta Ramah Anak -->
+                    <div class="p-2.5 rounded-xl border {{ $m4 ? 'bg-emerald-50/80 border-emerald-200 text-emerald-900' : 'bg-white border-slate-200 text-slate-600' }} flex items-center gap-2">
+                        <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[10px] font-bold {{ $m4 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700' }}">
+                            @if($m4) ✓ @else 4 @endif
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-xs font-bold truncate">4. Pakta Integritas</p>
+                            <p class="text-[10px] {{ $m4 ? 'text-emerald-700' : 'text-slate-400' }}">{{ $m4 ? 'Disetujui' : 'Belum ikrar' }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         @endif
 
-        <!-- 3. Empat Stat Cards Modern (bd-card) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <!-- 3. Empat Stat Cards Modern (2-Column on Mobile, 4-Column on Desktop) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             <!-- Stat 1: Saldo Tersedia -->
-            <div class="bd-card p-5 sm:p-6 space-y-3 hover:border-slate-300 transition">
-                <div class="flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Saldo Tersedia</span>
-                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
-                        <x-icons.wallet class="w-5 h-5 text-[#080F63]" />
+            <div class="bd-card p-4 sm:p-5 lg:p-6 space-y-3 hover:border-slate-300 transition group flex flex-col justify-between">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Saldo Tersedia</span>
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <x-icons.wallet class="w-4 h-4 sm:w-5 sm:h-5 text-[#080F63]" />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-[#080F63] tracking-tight tabular-nums">
-                        Rp {{ number_format($availableBalance, 0, ',', '.') }}
+                    <div>
+                        <div class="text-lg sm:text-2xl font-black text-[#080F63] tracking-tight tabular-nums">
+                            Rp {{ number_format($availableBalance, 0, ',', '.') }}
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-[#747B8C] mt-0.5 truncate">Siap ditransfer ke rekening</p>
                     </div>
-                    <p class="text-[11px] text-[#747B8C] mt-0.5">Siap dicairkan ke rekening bank</p>
                 </div>
                 <div class="pt-2 border-t border-[#E5E8F0]">
                     <a href="{{ route('teacher.payouts') }}" class="text-xs font-bold text-[#080F63] hover:underline inline-flex items-center gap-1">
@@ -107,62 +184,68 @@
             </div>
 
             <!-- Stat 2: Escrow Aktif -->
-            <div class="bd-card p-5 sm:p-6 space-y-3 hover:border-slate-300 transition">
-                <div class="flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-amber-700 uppercase tracking-wider block">Escrow Aktif</span>
-                    <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
-                        <x-icons.shield class="w-5 h-5 text-amber-600" />
+            <div class="bd-card p-4 sm:p-5 lg:p-6 space-y-3 hover:border-slate-300 transition group flex flex-col justify-between">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-[11px] font-bold text-amber-700 uppercase tracking-wider block">Escrow Aktif</span>
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <x-icons.shield class="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-amber-600 tracking-tight tabular-nums">
-                        Rp {{ number_format($inProcessAmount, 0, ',', '.') }}
+                    <div>
+                        <div class="text-lg sm:text-2xl font-black text-amber-600 tracking-tight tabular-nums">
+                            Rp {{ number_format($inProcessAmount, 0, ',', '.') }}
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-[#747B8C] mt-0.5 truncate">Diamankan hingga sesi usai</p>
                     </div>
-                    <p class="text-[11px] text-[#747B8C] mt-0.5">Diamankan hingga sesi selesai</p>
                 </div>
                 <div class="pt-2 border-t border-[#E5E8F0]">
                     <a href="{{ route('teacher.bookings') }}" class="text-xs font-bold text-amber-700 hover:underline inline-flex items-center gap-1">
-                        <span>Pantau Sesi Les</span>
+                        <span>Pantau Sesi</span>
                         <span>&rarr;</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Stat 3: Total Penghasilan -->
-            <div class="bd-card p-5 sm:p-6 space-y-3 hover:border-slate-300 transition">
-                <div class="flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Total Pendapatan</span>
-                    <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                        <x-icons.receipt class="w-5 h-5 text-emerald-600" />
+            <!-- Stat 3: Total Pendapatan -->
+            <div class="bd-card p-4 sm:p-5 lg:p-6 space-y-3 hover:border-slate-300 transition group flex flex-col justify-between">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Total Pendapatan</span>
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <x-icons.receipt class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-emerald-700 tracking-tight tabular-nums">
-                        Rp {{ number_format($grossEarnings, 0, ',', '.') }}
+                    <div>
+                        <div class="text-lg sm:text-2xl font-black text-emerald-700 tracking-tight tabular-nums">
+                            Rp {{ number_format($grossEarnings, 0, ',', '.') }}
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-[#747B8C] mt-0.5 truncate">Akumulasi seluruh sesi les</p>
                     </div>
-                    <p class="text-[11px] text-[#747B8C] mt-0.5">Akumulasi seluruh sesi selesai</p>
                 </div>
                 <div class="pt-2 border-t border-[#E5E8F0]">
                     <a href="{{ route('teacher.earnings') }}" class="text-xs font-bold text-emerald-700 hover:underline inline-flex items-center gap-1">
-                        <span>Lihat Buku Besar</span>
+                        <span>Buku Besar</span>
                         <span>&rarr;</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Stat 4: Sesi Les & Rating -->
-            <div class="bd-card p-5 sm:p-6 space-y-3 hover:border-slate-300 transition">
-                <div class="flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Sesi Selesai</span>
-                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
-                        <x-icons.academic class="w-5 h-5 text-[#080F63]" />
+            <!-- Stat 4: Sesi Les Selesai -->
+            <div class="bd-card p-4 sm:p-5 lg:p-6 space-y-3 hover:border-slate-300 transition group flex flex-col justify-between">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Sesi Selesai</span>
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <x-icons.academic class="w-4 h-4 sm:w-5 sm:h-5 text-purple-700" />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-[#171923] tracking-tight tabular-nums">
-                        {{ $completedLessonsCount ?? 0 }} Sesi
+                    <div>
+                        <div class="text-lg sm:text-2xl font-black text-[#171923] tracking-tight tabular-nums">
+                            {{ $completedLessonsCount ?? 0 }} Sesi
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-[#747B8C] mt-0.5 truncate">Rating: ★ {{ number_format($profile->rating_cache ?? 5.0, 1) }}</p>
                     </div>
-                    <p class="text-[11px] text-[#747B8C] mt-0.5">Rating pengajaran: ★ {{ number_format($profile->rating_cache ?? 5.0, 1) }}</p>
                 </div>
                 <div class="pt-2 border-t border-[#E5E8F0]">
                     <a href="{{ route('teacher.reviews') }}" class="text-xs font-bold text-[#080F63] hover:underline inline-flex items-center gap-1">
@@ -178,44 +261,44 @@
             <!-- Left Column: Permintaan Les Masuk & Aksi Cepat (7 cols) -->
             <div class="lg:col-span-7 space-y-6">
                 <!-- Permintaan Les Baru -->
-                <div class="bd-card p-6 sm:p-7 space-y-5">
+                <div class="bd-card p-5 sm:p-7 space-y-5">
                     <div class="flex items-center justify-between pb-3 border-b border-[#E5E8F0]">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
+                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
                                 <x-icons.calendar class="w-5 h-5 text-[#080F63]" />
                             </div>
                             <div>
                                 <h3 class="text-base font-extrabold text-[#171923]">Permintaan Les Masuk</h3>
-                                <p class="text-xs text-[#747B8C]">Pemesanan bimbingan les privat yang menunggu konfirmasi Anda</p>
+                                <p class="text-xs text-[#747B8C]">Pemesanan les privat yang menunggu konfirmasi Anda</p>
                             </div>
                         </div>
 
-                        <span class="px-3 py-1 rounded-full text-xs font-bold {{ $pendingRequests->count() > 0 ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-slate-100 text-slate-600' }}">
-                            {{ $pendingRequests->count() }} Permintaan
+                        <span class="px-3 py-1 rounded-full text-xs font-bold shrink-0 {{ $pendingRequests->count() > 0 ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-slate-100 text-slate-600' }}">
+                            {{ $pendingRequests->count() }} Menunggu
                         </span>
                     </div>
 
                     <div class="space-y-4">
                         @forelse($pendingRequests as $req)
-                            <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E5E8F0] hover:border-slate-300 transition space-y-4 shadow-2xs">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div class="flex items-center gap-3.5">
-                                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#080F63] to-[#1222A8] text-white font-black text-sm flex items-center justify-center shrink-0 shadow-xs">
+                            <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] border border-[#E5E8F0] hover:border-slate-300 transition space-y-4 shadow-2xs">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-[#080F63] to-[#1222A8] text-white font-black text-sm flex items-center justify-center shrink-0 shadow-xs">
                                             {{ substr($req->student->name, 0, 1) }}
                                         </div>
-                                        <div>
-                                            <h4 class="text-sm font-extrabold text-[#171923]">{{ $req->student->name }}</h4>
-                                            <p class="text-xs text-[#747B8C]">
+                                        <div class="min-w-0">
+                                            <h4 class="text-sm font-extrabold text-[#171923] truncate">{{ $req->student->name }}</h4>
+                                            <p class="text-xs text-[#747B8C] truncate">
                                                 📚 {{ $req->subject->name }} &bull; <span class="uppercase font-semibold text-slate-700">{{ $req->student->class_grade ?? $req->student->grade_level }}</span>
                                             </p>
-                                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                            <p class="text-[11px] text-slate-400 mt-0.5 truncate">
                                                 Orang Tua: <span class="text-slate-600 font-medium">{{ $req->parent->name }}</span>
                                             </p>
                                         </div>
                                     </div>
 
                                     <div class="text-right shrink-0">
-                                        <span class="text-[10px] text-slate-400 font-bold block uppercase">Honor Sesi:</span>
+                                        <span class="text-[10px] text-slate-400 font-bold block uppercase">Honor Sesi</span>
                                         <span class="text-sm sm:text-base font-black text-[#080F63] tabular-nums">
                                             Rp {{ number_format($req->session_fee, 0, ',', '.') }}
                                         </span>
@@ -224,17 +307,21 @@
 
                                 <!-- Schedule & Location Breakdown Box -->
                                 <div class="text-xs bg-white p-3.5 rounded-xl border border-[#E5E8F0] space-y-2">
-                                    <div class="flex items-center gap-2 text-slate-800 font-semibold tabular-nums">
-                                        <x-icons.calendar class="w-4 h-4 text-[#080F63] shrink-0" />
-                                        <span>{{ $req->booking_date->translatedFormat('l, d F Y') }}</span>
-                                        <span class="text-slate-300">•</span>
-                                        <x-icons.clock class="w-4 h-4 text-blue-500 shrink-0" />
-                                        <span>{{ substr($req->start_time, 0, 5) }} - {{ substr($req->end_time, 0, 5) }} WIB ({{ $req->session_duration_minutes ?? 90 }} mnt)</span>
+                                    <div class="flex items-center gap-2 text-slate-800 font-semibold tabular-nums flex-wrap">
+                                        <div class="flex items-center gap-1.5">
+                                            <x-icons.calendar class="w-4 h-4 text-[#080F63] shrink-0" />
+                                            <span>{{ $req->booking_date->translatedFormat('l, d F Y') }}</span>
+                                        </div>
+                                        <span class="text-slate-300 hidden sm:inline">•</span>
+                                        <div class="flex items-center gap-1.5">
+                                            <x-icons.clock class="w-4 h-4 text-blue-500 shrink-0" />
+                                            <span>{{ substr($req->start_time, 0, 5) }} - {{ substr($req->end_time, 0, 5) }} WIB ({{ $req->session_duration_minutes ?? 90 }} mnt)</span>
+                                        </div>
                                     </div>
 
                                     <div class="flex items-start gap-2 text-[11px] text-slate-600">
                                         <x-icons.map-pin class="w-4 h-4 text-[#080F63] shrink-0 mt-0.5" />
-                                        <span class="leading-relaxed">Alamat Les: {{ $req->lesson_address }}</span>
+                                        <span class="leading-relaxed">Alamat: {{ $req->lesson_address }}</span>
                                     </div>
 
                                     @if($req->notes)
@@ -246,13 +333,13 @@
 
                                 <!-- Accept or Reject Action Buttons -->
                                 <div class="flex items-center justify-end gap-2.5 pt-1" x-data="{ rejectModal: false }">
-                                    <button type="button" @click="rejectModal = true" class="btn-white-pill text-xs py-2 px-4 text-rose-600 hover:bg-rose-50 border-rose-200">
-                                        Tolak Permintaan
+                                    <button type="button" @click="rejectModal = true" class="btn-white-pill text-xs py-2 px-3.5 text-rose-600 hover:bg-rose-50 border-rose-200">
+                                        Tolak
                                     </button>
 
                                     <form method="POST" action="{{ route('teacher.bookings.accept', $req->id) }}">
                                         @csrf
-                                        <button type="submit" class="btn-navy bg-emerald-600 hover:bg-emerald-700 text-xs py-2 px-5 font-bold shadow-xs flex items-center gap-1.5">
+                                        <button type="submit" class="btn-navy bg-emerald-600 hover:bg-emerald-700 text-xs py-2 px-4 sm:px-5 font-bold shadow-xs flex items-center gap-1.5">
                                             <x-icons.check class="w-4 h-4 text-white" />
                                             <span>Terima Permintaan</span>
                                         </button>
@@ -262,14 +349,14 @@
                                     <div x-show="rejectModal" x-cloak class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
                                         <div @click.away="rejectModal = false" class="bg-white rounded-3xl p-6 sm:p-7 max-w-md w-full border border-slate-200 shadow-2xl space-y-4 text-left">
                                             <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                                                <h4 class="text-base font-extrabold text-slate-900">Alasan Penolakan Permintaan</h4>
+                                                <h4 class="text-base font-extrabold text-slate-900">Alasan Penolakan</h4>
                                                 <button type="button" @click="rejectModal = false" class="p-1 text-slate-400 hover:text-slate-600 rounded-md">
                                                     <x-icons.x-mark class="w-5 h-5" />
                                                 </button>
                                             </div>
 
-                                            <p class="text-xs text-slate-600">
-                                                Mohon sertakan alasan agar orang tua murid memahami kendala Anda (misal: bentrok jadwal atau di luar jangkauan rute).
+                                            <p class="text-xs text-slate-600 leading-relaxed">
+                                                Mohon sertakan alasan penolakan agar orang tua murid memahami kendala Anda (misal: bentrok jadwal atau di luar rute).
                                             </p>
 
                                             <form method="POST" action="{{ route('teacher.bookings.reject', $req->id) }}" class="space-y-4">
@@ -290,12 +377,12 @@
                                 </div>
                             </div>
                         @empty
-                            <div class="text-center py-10 rounded-2xl bg-[#F8FAFC] border border-dashed border-[#E5E8F0] space-y-2">
+                            <div class="text-center py-8 sm:py-10 rounded-2xl bg-[#F8FAFC] border border-dashed border-[#E5E8F0] space-y-2">
                                 <div class="w-12 h-12 rounded-2xl bg-blue-50 text-[#080F63] flex items-center justify-center mx-auto">
                                     <x-icons.calendar class="w-6 h-6 text-[#080F63]" />
                                 </div>
                                 <h4 class="text-xs font-bold text-slate-700">Tidak ada permintaan les yang menunggu</h4>
-                                <p class="text-[11px] text-slate-400 max-w-sm mx-auto">
+                                <p class="text-[11px] text-slate-400 max-w-sm mx-auto px-4">
                                     Permintaan les baru dari orang tua murid yang memesan bimbingan privat akan muncul di bagian ini.
                                 </p>
                             </div>
@@ -303,40 +390,56 @@
                     </div>
                 </div>
 
-                <!-- Aksi Cepat Guru (4 Quick Cards) -->
-                <div class="bd-card p-6 sm:p-7 space-y-4">
+                <!-- Pintasan Menu Guru (6 Modern Launcher Buttons) -->
+                <div class="bd-card p-5 sm:p-7 space-y-4">
                     <div class="pb-2 border-b border-[#E5E8F0]">
                         <h3 class="text-sm font-extrabold text-[#171923]">Pintasan Menu Guru</h3>
-                        <p class="text-xs text-[#747B8C]">Akses cepat pengaturan layanan dan aktivitas mengajar</p>
+                        <p class="text-xs text-[#747B8C]">Akses cepat pengelolaan layanan dan aktivitas mengajar</p>
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3 text-center">
                         <a href="{{ route('teacher.schedules') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
-                            <div class="w-11 h-11 rounded-xl bg-blue-50 text-[#080F63] group-hover:bg-[#080F63] group-hover:text-white flex items-center justify-center transition shadow-2xs">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#080F63] group-hover:bg-[#080F63] group-hover:text-white flex items-center justify-center transition shadow-2xs">
                                 <x-icons.clock class="w-5 h-5" />
                             </div>
-                            <span class="text-xs font-bold text-[#171923]">Jadwal Mengajar</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-[#171923] truncate w-full">Jadwal</span>
                         </a>
 
                         <a href="{{ route('teacher.subjects') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
-                            <div class="w-11 h-11 rounded-xl bg-blue-50 text-[#080F63] group-hover:bg-[#080F63] group-hover:text-white flex items-center justify-center transition shadow-2xs">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-50 text-indigo-700 group-hover:bg-indigo-700 group-hover:text-white flex items-center justify-center transition shadow-2xs">
                                 <x-icons.book class="w-5 h-5" />
                             </div>
-                            <span class="text-xs font-bold text-[#171923]">Mata Pelajaran</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-[#171923] truncate w-full">Mapel & Tarif</span>
                         </a>
 
-                        <a href="{{ route('teacher.reviews') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
-                            <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white flex items-center justify-center transition shadow-2xs">
-                                <x-icons.star class="w-5 h-5" />
+                        <a href="{{ route('teacher.bookings') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-sky-50 text-sky-700 group-hover:bg-sky-700 group-hover:text-white flex items-center justify-center transition shadow-2xs">
+                                <x-icons.calendar class="w-5 h-5" />
                             </div>
-                            <span class="text-xs font-bold text-[#171923]">Ulasan Murid</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-[#171923] truncate w-full">Pesanan</span>
                         </a>
 
                         <a href="{{ route('teacher.payouts') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
-                            <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition shadow-2xs">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition shadow-2xs">
                                 <x-icons.bank class="w-5 h-5" />
                             </div>
-                            <span class="text-xs font-bold text-[#171923]">Tarik Dana</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-[#171923] truncate w-full">Tarik Dana</span>
+                        </a>
+
+                        <a href="{{ route('teacher.reviews') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white flex items-center justify-center transition shadow-2xs">
+                                <x-icons.star class="w-5 h-5" />
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-bold text-[#171923] truncate w-full">Ulasan</span>
+                        </a>
+
+                        <a href="{{ route('teacher.messages') }}" class="flex flex-col items-center gap-2 p-3 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/70 border border-[#E5E8F0] hover:border-blue-200 transition group">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-purple-50 text-purple-700 group-hover:bg-purple-700 group-hover:text-white flex items-center justify-center transition shadow-2xs">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-bold text-[#171923] truncate w-full">Pesan</span>
                         </a>
                     </div>
                 </div>
@@ -345,10 +448,10 @@
             <!-- Right Column: Jadwal Hari Ini & Kepatuhan Legalitas (5 cols) -->
             <div class="lg:col-span-5 space-y-6">
                 <!-- Jadwal Mengajar Hari Ini -->
-                <div class="bd-card p-6 sm:p-7 space-y-4">
+                <div class="bd-card p-5 sm:p-7 space-y-4">
                     <div class="flex items-center justify-between pb-3 border-b border-[#E5E8F0]">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
+                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
                                 <x-icons.clock class="w-5 h-5 text-[#080F63]" />
                             </div>
                             <div>
@@ -385,20 +488,29 @@
                                     </p>
                                 </div>
 
-                                @if($today->status === 'confirmed')
-                                    <form method="POST" action="{{ route('teacher.bookings.confirm-session', $today->id) }}" class="pt-1">
-                                        @csrf
-                                        <button type="submit" class="w-full btn-navy bg-emerald-600 hover:bg-emerald-700 py-2.5 text-xs font-bold shadow-xs justify-center flex items-center gap-2">
-                                            <x-icons.check class="w-4 h-4 text-white" />
-                                            <span>Konfirmasi Hadir di Rumah Murid</span>
-                                        </button>
-                                    </form>
-                                @endif
+                                <div class="flex items-center gap-2 pt-1">
+                                    @if($today->status === 'confirmed')
+                                        <form method="POST" action="{{ route('teacher.bookings.confirm-session', $today->id) }}" class="flex-1">
+                                            @csrf
+                                            <button type="submit" class="w-full btn-navy bg-emerald-600 hover:bg-emerald-700 py-2 text-xs font-bold shadow-xs justify-center flex items-center gap-1.5">
+                                                <x-icons.check class="w-4 h-4 text-white" />
+                                                <span>Konfirmasi Hadir</span>
+                                            </button>
+                                        </form>
+                                    @endif
+
+                                    <a href="{{ route('teacher.messages') }}" class="btn-white-pill text-xs py-2 px-3 text-[#080F63] inline-flex items-center gap-1 shrink-0">
+                                        <span>Chat</span>
+                                    </a>
+                                </div>
                             </div>
                         @empty
-                            <div class="text-center py-7 rounded-2xl bg-[#F8FAFC] border border-dashed border-[#E5E8F0] space-y-1.5">
+                            <div class="text-center py-6 sm:py-7 rounded-2xl bg-[#F8FAFC] border border-dashed border-[#E5E8F0] space-y-1.5">
                                 <p class="text-xs font-bold text-slate-700">Tidak ada jadwal mengajar hari ini.</p>
-                                <p class="text-[11px] text-slate-400">Gunakan waktu luang untuk memperbarui ketersediaan slot jam.</p>
+                                <p class="text-[11px] text-slate-400">Pastikan ketersediaan slot jam Anda selalu terisi.</p>
+                                <a href="{{ route('teacher.schedules') }}" class="inline-block text-xs font-bold text-[#080F63] hover:underline pt-1">
+                                    + Tambah Slot Waktu
+                                </a>
                             </div>
                         @endforelse
 
@@ -425,14 +537,14 @@
                 </div>
 
                 <!-- Status Profil & Kepatuhan Legalitas Guru -->
-                <div class="bd-card p-6 sm:p-7 space-y-4">
+                <div class="bd-card p-5 sm:p-7 space-y-4">
                     <div class="flex items-center justify-between pb-3 border-b border-[#E5E8F0]">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center">
+                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#080F63] flex items-center justify-center shrink-0">
                                 <x-icons.shield class="w-5 h-5 text-[#080F63]" />
                             </div>
                             <div>
-                                <h3 class="text-base font-extrabold text-[#171923]">Legalitas & Kredensial</h3>
+                                <h3 class="text-base font-extrabold text-[#171923]">Kredensial & Layanan</h3>
                                 <p class="text-xs text-[#747B8C]">Standar kepatuhan resmi UU Guru & UU Anak</p>
                             </div>
                         </div>
@@ -448,17 +560,17 @@
                             <span class="font-bold text-slate-800">{{ $profile->max_travel_distance_km ?? 10 }} km radius</span>
                         </div>
                         <div class="flex items-center justify-between">
-                            <span class="text-slate-600">Rekening Bank:</span>
+                            <span class="text-slate-600">Rekening Pencairan:</span>
                             <span class="font-bold text-slate-800">{{ $profile->bank_name ?? 'BCA' }} - {{ $profile->bank_account_number ? '••••' . substr($profile->bank_account_number, -4) : 'Belum diatur' }}</span>
                         </div>
 
                         <div class="pt-2 border-t border-[#E5E8F0] space-y-1.5 text-[11px]">
                             <div class="flex items-center gap-2 text-emerald-800 font-semibold">
-                                <x-icons.check class="w-3.5 h-3.5 text-emerald-600" />
+                                <x-icons.check class="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                                 <span>KTP WNI & Ijazah S1 Terverifikasi</span>
                             </div>
                             <div class="flex items-center gap-2 text-emerald-800 font-semibold">
-                                <x-icons.check class="w-3.5 h-3.5 text-emerald-600" />
+                                <x-icons.check class="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                                 <span>SKCK & Pakta Ramah Anak Sah</span>
                             </div>
                         </div>

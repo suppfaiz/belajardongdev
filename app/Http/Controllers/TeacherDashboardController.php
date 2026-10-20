@@ -34,6 +34,7 @@ class TeacherDashboardController extends Controller
     {
         $user = Auth::user();
         $profile = $user->teacherProfile;
+        $profile?->loadMissing(['documents', 'subjects', 'city']);
 
         // Financial balances
         $grossEarnings = (int) Booking::where('teacher_id', $user->id)

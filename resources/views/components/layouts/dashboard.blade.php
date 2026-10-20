@@ -140,30 +140,55 @@
 
                 <!-- Center: Global Search Bar (Desktop only) -->
                 <div class="hidden md:flex items-center flex-1 max-w-lg mx-6">
-                    <form action="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" method="GET" class="relative w-full">
-                        <div class="relative flex items-center">
-                            <svg class="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                            <input type="text" 
-                                   name="q" 
-                                   value="{{ request('q') }}"
-                                   placeholder="Cari guru, mata pelajaran, atau kebutuhan belajar..." 
-                                   class="w-full bg-[#F3F5FA] border border-[#E5E8F0] rounded-full pl-11 pr-4 py-2.5 text-sm text-[#171923] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63] transition">
-                        </div>
-                    </form>
+                    @if(Auth::user()?->role === 'teacher')
+                        <form action="{{ route('teacher.bookings') }}" method="GET" class="relative w-full">
+                            <div class="relative flex items-center">
+                                <svg class="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                <input type="text" 
+                                       name="q" 
+                                       value="{{ request('q') }}"
+                                       placeholder="Cari nama murid atau kode pemesanan les..." 
+                                       class="w-full bg-[#F3F5FA] border border-[#E5E8F0] rounded-full pl-11 pr-4 py-2.5 text-sm text-[#171923] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63] transition">
+                            </div>
+                        </form>
+                    @else
+                        <form action="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" method="GET" class="relative w-full">
+                            <div class="relative flex items-center">
+                                <svg class="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                <input type="text" 
+                                       name="q" 
+                                       value="{{ request('q') }}"
+                                       placeholder="Cari guru, mata pelajaran, atau topik belajar..." 
+                                       class="w-full bg-[#F3F5FA] border border-[#E5E8F0] rounded-full pl-11 pr-4 py-2.5 text-sm text-[#171923] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#080F63]/20 focus:border-[#080F63] transition">
+                            </div>
+                        </form>
+                    @endif
                 </div>
 
                 <!-- Right: Notifications + User Profile -->
                 <div class="flex items-center gap-2 sm:gap-4 shrink-0">
-                    <!-- Quick Search Button on Mobile -->
-                    <a href="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" 
-                       class="md:hidden p-2 text-slate-600 hover:text-[#080F63] rounded-full bg-[#F3F5FA] hover:bg-slate-100 transition" 
-                       title="Cari Guru">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </a>
+                    <!-- Quick Action Button on Mobile -->
+                    @if(Auth::user()?->role === 'teacher')
+                        <a href="{{ route('teacher.bookings') }}" 
+                           class="md:hidden p-2 text-slate-600 hover:text-[#080F63] rounded-full bg-[#F3F5FA] hover:bg-slate-100 transition relative" 
+                           title="Pesanan Masuk">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </a>
+                    @else
+                        <a href="{{ Route::has('parent.teachers.search') && Auth::user()?->role === 'parent' ? route('parent.teachers.search') : route('teachers.search', ['from' => 'dashboard']) }}" 
+                           class="md:hidden p-2 text-slate-600 hover:text-[#080F63] rounded-full bg-[#F3F5FA] hover:bg-slate-100 transition" 
+                           title="Cari Guru">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </a>
+                    @endif
 
                     @auth
                         <!-- Notification Bell with Red Badge -->

@@ -96,4 +96,20 @@ class TeacherDashboardViewTest extends TestCase
         $response->assertSee('3. SKCK Polisi');
         $response->assertSee('4. Pakta Integritas');
     }
+
+    public function test_teacher_can_access_and_view_profile_settings_page(): void
+    {
+        $response = $this->actingAs($this->teacher)
+            ->get(route('teacher.profile'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Kredensial Mengajar');
+        $response->assertSee('Data Pribadi');
+        $response->assertSee('Kualifikasi Akademik');
+        $response->assertSee('Area Layanan Offline');
+        $response->assertSee('Rekening Bank untuk Pencairan Saldo');
+        $response->assertSee('Simpan Seluruh Perubahan');
+        $response->assertSee('Pakar Fisika &amp; Matematika SMA', false);
+        $response->assertSee('Ahmad Fauzi, M.Pd');
+    }
 }
